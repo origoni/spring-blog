@@ -1,0 +1,15 @@
+spring:
+    view:
+        prefix: /WEB-INF/jsp/
+        suffix: .jsp
+    jpa:
+        database: H2
+
+#    datasource:
+#        url: jdbc:h2:mem:mydb
+#        username: sa
+#        password: sa
+#        driverClassName: org.h2.jdbcx.JdbcDataSource
+#        platform: h2
+
+        
