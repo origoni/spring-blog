@@ -13,25 +13,25 @@ import com.millky.blog.infrastructure.dao.HelloDao;
 @Controller
 public class HelloController {
 
-	@Autowired
-	private HelloDao helloDao;
-
-	@RequestMapping("/add")
-	public String add(Hello hello) {
-
-		helloDao.save(hello);
-
-		return "redirect:/list";
-	}
-
-	@RequestMapping("/list")
-	public String list(Model model) {
-
-		List<Hello> l = helloDao.findAll();
-		int index = l.size();
-		System.out.println(index);
-		model.addAttribute("name", l.get(index - 1).getName());
-
-		return "hello";
-	}
+//	@Autowired
+//	private HelloDao helloDao;
+//
+//	@RequestMapping("/add")
+//	public String add(Hello hello) {
+//
+//		helloDao.save(hello);
+//
+//		return "redirect:/list";
+//	}
+//
+//	@RequestMapping("/list")
+//	public String list(Model model) {
+//
+//		List<Hello> l = helloDao.findAll();
+//		int index = l.size();
+//		System.out.println(index);
+//		model.addAttribute("name", l.get(index - 1).getName());
+//
+//		return "hello";
+//	}
 }
