@@ -1,4 +1,4 @@
-package com.millky.blog.application.config;
+package com.millky.blog.application.configuration;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
