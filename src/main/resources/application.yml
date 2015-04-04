@@ -1,9 +1,10 @@
-#spring:
+spring:
+    view:
+        prefix: /WEB-INF/jsp/
+        suffix: .jsp
+
 #    jpa:
 #        database: H2
-#    view:
-#        prefix: /WEB-INF/jsp/
-#        suffix: .jsp
 
 
 #    datasource:

@@ -51,11 +51,6 @@ dependencies {
     compile("javax.servlet:jstl")
     compile("org.apache.tomcat.embed:tomcat-embed-jasper")
 
-    compile("jstl:jstl:1.2")
-    compile("taglibs:standard:1.1.2")
-
-//compile 'org.apache.taglibs:taglibs-standard:1.2.3'
-//compile("javax.servlet:javax.servlet-api")
 }
 
 //eclipse {
