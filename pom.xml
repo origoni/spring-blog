@@ -20,7 +20,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<start-class>com.millky.blog.SpringBlogApplication</start-class>
+		<start-class>com.millky.blog.Booter</start-class>
 		<java.version>1.8</java.version>
 	</properties>
 
