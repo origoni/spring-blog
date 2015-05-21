@@ -7,12 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HelloController {
 
-	@RequestMapping("/jsp")
+	@RequestMapping("/hello")
 	public String index(Model model) {
 
-		model.addAttribute("name", "Millky");
+		model.addAttribute("name", "SpringBlog from Millky");
 
 		return "hello";
 	}
-
 }

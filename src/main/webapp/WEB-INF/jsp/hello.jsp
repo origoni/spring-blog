@@ -8,12 +8,8 @@
 <title>Hello Millky</title>
 </head>
 <body>
-<h2>Hello! ${name}</h2>
-
-<c:out value="<xmp>" escapeXml="true"></c:out>
-<h2>Hello! ${name}</h2>
-
-<c:out value="<xmp>" escapeXml="false"></c:out>
-<h2>Hello! ${name}</h2>
+	<c:out value="<xmp>" escapeXml="true"></c:out>
+	<h2>Hello! ${name}</h2>
+	<div>JSP version</div>
 </body>
 </html>
