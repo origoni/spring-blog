@@ -1,10 +1,32 @@
-# Millky
+# SpringBlog
 
 ### 관련 링크
 - http://millky.com/
 - http://millky.com/@origoni/folder/28/post/list
 
 ### Project Convention
+
+#### Package Structure
+
+```
+vom.millky.blog
+    └── application
+        └── configuration
+        └── utility
+    └── domain
+        └── model
+            └── command
+            └── entity
+        └── repository
+        └── service
+    └── infrastructure
+        └── dao
+    └── presentation
+        └── controller
+            └── rest
+        └── support
+            └── result
+```
 
 #### Environment
 - Java version: 1.8.0+
