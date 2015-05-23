@@ -9,7 +9,7 @@
 #### Package Structure
 
 ```
-vom.millky.blog
+com.millky.blog
     └── application
         └── configuration
         └── utility
