@@ -32,7 +32,7 @@ public class HelloRestController {
 		return helloList;
 	}
 
-	@RequestMapping("/")
+	@RequestMapping("/test")
 	public String index() {
 		return "helloworld!";
 	}
