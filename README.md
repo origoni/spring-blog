@@ -7,7 +7,7 @@ http://millky.com/@origoni
 
 ### 관련 링크
 - http://millky.com/
-- http://millky.com/@origoni/folder/28/post/list
+- http://millky.com/@origoni/folder/30/post/list
 
 ### Project Convention
 
