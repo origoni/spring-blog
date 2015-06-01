@@ -1,5 +1,7 @@
 package com.millky.blog.domain.model.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +13,16 @@ public class Hello {
 	int id;
 
 	String name;
+	
+	Date date;
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 	public int getId() {
 		return id;
