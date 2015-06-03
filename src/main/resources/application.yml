@@ -5,13 +5,9 @@ spring:
 
 #    jpa:
 #        database: H2
-
-
 #    datasource:
-#        url: jdbc:h2:mem:mydb
+#        url: jdbc:h2:mem:testdb
 #        username: sa
-#        password: sa
-#        driverClassName: org.h2.jdbcx.JdbcDataSource
-#        platform: h2
+#        password: 
+#        driverClassName: org.h2.Driver
 
-        
