@@ -15,7 +15,7 @@
 		<c:out value="<xmp>" escapeXml="true"></c:out>
 		<h2>Hello! ${name}</h2>
 		<div>JSP version</div>
-		<a href="/blog"><button type="button" class="btn btn-lg btn-success btn-block">Spring Blog</button></a>
+		<a href="/post/list"><button type="button" class="btn btn-lg btn-success btn-block">Spring Blog</button></a>
 		
 		<div class="page-header">
         <h1>Buttons</h1>

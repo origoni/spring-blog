@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Hello Spring Blog</title>
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.4/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/webjars/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/webjars/origoni-startbootstrap-clean-blog/1.0.3/css/clean-blog.min.css">
 </head>
 <body>
@@ -23,23 +24,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                <a class="navbar-brand" href="/post/list">SpringBlog</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/blog">Home</a>
+                        <a href="/post/write">Write Post</a>
                     </li>
                     <li>
-                        <a href="#about.html">About</a>
+                        <a href="https://github.com/origoni/Spring-Blog">Spring-Blog GitHub</a>
                     </li>
                     <li>
-                        <a href="/post">Sample Post</a>
-                    </li>
-                    <li>
-                        <a href="#contact.html">Contact</a>
+                        <a href="http://millky.com/@origoni/folder/30/post/list">자바 블로그 개발하기</a>
                     </li>
                 </ul>
             </div>
@@ -55,9 +53,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Clean Blog</h1>
+                        <h1>Spring Blog</h1>
                         <hr class="small">
-                        <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
+                        <span class="subheading">Spring Blog form Millky</span>
                     </div>
                 </div>
             </div>
@@ -73,7 +71,7 @@
 				<div class="post-preview">
                     <a href="/post/${post.id}">
                         <h2 class="post-title">
-                            ${post.subject}
+                            <c:out value="${post.subject}" escapeXml="true"></c:out>
                         </h2>
                         <h3 class="post-subtitle">
                             부 제목
@@ -103,15 +101,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <ul class="list-inline text-center">
                         <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
+                            <a href="https://www.facebook.com/millkyc">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -119,15 +109,23 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="https://github.com/origoni">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                                 </span>
                             </a>
                         </li>
+                        <li>
+                            <a href="https://twitter.com/origoni">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                    <p class="copyright text-muted">Powered By <a href="http://millky.com">Millky</a> | Skin designed by <a href="http://startbootstrap.com/template-overviews/clean-blog/">Start Bootstrap</a></p>
                 </div>
             </div>
         </div>

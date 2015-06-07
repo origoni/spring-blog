@@ -12,14 +12,4 @@ public class HelloController {
 		model.addAttribute("name", "SpringBlog from Millky");
 		return "hello";
 	}
-
-	@RequestMapping({ "/blog" })
-	public String blog(Model model) {
-		return "blog";
-	}
-
-	@RequestMapping({ "/post" })
-	public String post(Model model) {
-		return "post";
-	}
 }
