@@ -71,10 +71,10 @@
 				<div class="post-preview">
                     <a href="/post/${post.id}">
                         <h2 class="post-title">
-                            <c:out value="${post.subject}" escapeXml="true"></c:out>
+                            <c:out value="${post.title}" escapeXml="true"></c:out>
                         </h2>
                         <h3 class="post-subtitle">
-                            부 제목
+                            <c:out value="${post.subtitle}" escapeXml="true"></c:out>
                         </h3>
                     </a>
                     <p class="post-meta">Posted by <a href="#">Origoni</a> on ${post.regDate}</p>
