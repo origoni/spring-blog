@@ -5,7 +5,7 @@
 
 	<groupId>com.millky.blog</groupId>
 	<artifactId>spring-blog</artifactId>
-	<version>0.0.9-SNAPSHOT</version>
+	<version>0.0.11-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>SpringBlog</name>
@@ -33,8 +33,12 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<!-- <scope>runtime</scope> -->
 		</dependency>
+
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-facebook</artifactId>
+        </dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

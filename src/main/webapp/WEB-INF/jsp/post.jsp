@@ -70,6 +70,15 @@
                     ${post.content}
                 </div>
             </div>
+            
+            <div class="pull-right">
+            	<a href="/post/${post.id}/edit">
+            		<button type="button" class="btn btn-warning">Edit</button>
+            	</a>
+            	<a href="/post/${post.id}/delete" onclick="if(!confirm('진심이에요?')){return false;}">
+            		<button type="button" class="btn btn-danger">Delete</button>
+            	</a>
+            </div>
         </div>
     </article>
 

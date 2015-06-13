@@ -74,7 +74,12 @@
 	  <i class="pen-icon icon-createlink" data-action="createlink"></i>
 	</div>
 
-	<form:form action="/post/write" commandName="post" onsubmit="if($('#pen').html()!='<p><br></p>')$('#content').val($('#pen').html()); pen.destroy();" method="post">
+	<c:if test="${post.id == 0}"><c:url var="actionUrl" value="/post/write"/></c:if>
+	<c:if test="${post.id != 0}"><c:url var="actionUrl" value="/post/${post.id}/edit"/></c:if>
+
+	<form:form action="${actionUrl}" commandName="post" onsubmit="if($('#pen').html()!='<p><br></p>')$('#content').val($('#pen').html()); pen.destroy();" method="post">
+
+		<c:if test="${post.id != 0}"><form:input type="hidden" path="regDate" /></c:if>
 
 		<form:errors path="*" cssClass="errorblock" element="div" />
 
@@ -113,6 +118,8 @@
 			toolbar : document.getElementById('custom-toolbar'),
 			editor : document.querySelector('[data-toggle="pen"]')
 		};
+		
+		$('#pen').html($('#content').val());
 
 		// create editor
 		var pen = window.pen = new Pen(options);
