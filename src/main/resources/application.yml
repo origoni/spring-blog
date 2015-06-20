@@ -2,12 +2,10 @@ spring:
     view:
         prefix: /WEB-INF/jsp/
         suffix: .jsp
-
-#    jpa:
-#        database: H2
-#    datasource:
-#        url: jdbc:h2:mem:testdb
-#        username: sa
-#        password: 
-#        driverClassName: org.h2.Driver
-
+    social:
+        facebook:
+            appId: 487654301400466
+            appSecret: 
+logging:
+    level:
+        com.millky.blog: DEBUG

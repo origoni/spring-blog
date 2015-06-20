@@ -12,17 +12,17 @@ import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
-
 @Getter
 @Setter
 @Entity
 public class Post {
-	
+
 	@Id
 	@GeneratedValue
 	int id;
+
+	String userId;
+	String name;
 
 	@NotNull
 	@Size(min = 1, max = 255)
@@ -37,6 +37,7 @@ public class Post {
 	@Column(length = 100000000)
 	String content;
 
-	@DateTimeFormat(iso = ISO.DATE_TIME)
+	String _csrf;
+
 	LocalDateTime regDate;
 }

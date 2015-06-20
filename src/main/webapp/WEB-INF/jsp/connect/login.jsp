@@ -7,13 +7,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Hello Spring Blog</title>
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.4/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="/webjars/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/webjars/origoni-startbootstrap-clean-blog/1.0.3/css/clean-blog.min.css">
+<title>Login</title>
 </head>
 <body>
-	<!-- Navigation -->
+
+    <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -34,18 +35,10 @@
                         <a href="/post/write">Write Post</a>
                     </li>
                     <li>
-                        <a href="https://github.com/origoni/Spring-Blog">Spring-Blog GitHub</a>
+                        <a href="/connect">Connections</a>
                     </li>
                     <li>
                         <a href="http://millky.com/@origoni/folder/30/post/list">자바 블로그 개발하기</a>
-                    </li>
-                    <li>
-					<c:if test="${user!=null}">   
-						<form action="/user/logout" method="post">
-							<button type="submit" class="btn">Disconnect</button>
-							<input type="hidden" name="_csrf" value="${_csrf.token}"></input>
-						</form>
-					</c:if>
                     </li>
                 </ul>
             </div>
@@ -53,54 +46,34 @@
         </div>
         <!-- /.container -->
     </nav>
-
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('http://ironsummitmedia.github.io/startbootstrap-clean-blog/img/home-bg.jpg')">
+    
+    <header class="intro-header" style="background-image: url('http://ironsummitmedia.github.io/startbootstrap-clean-blog/img/contact-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Spring Blog</h1>
+                    <div class="page-heading">
+                        <h1>Login</h1>
                         <hr class="small">
-                        <span class="subheading">Spring Blog form Millky</span>
+                        <span class="subheading">Connect to Facebook</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-			<c:forEach var="post" items="${postList}">
-				<div class="post-preview">
-                    <a href="/post/${post.id}">
-                        <h2 class="post-title">
-                            <c:out value="${post.title}" escapeXml="true"></c:out>
-                        </h2>
-                        <h3 class="post-subtitle">
-                            <c:out value="${post.subtitle}" escapeXml="true"></c:out>
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">${post.name}</a> on ${post.regDate}</p>
-                </div>
-                <hr>
-			</c:forEach>
-			
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="next">
-                        <a href="#">Older Posts &rarr;</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<h3>Connect to Facebook API v2.3</h3>
 
-    <hr>
+		<form action="/signin/facebook" method="POST">
+			<input type="hidden" name="_csrf" value="${_csrf.token}"></input>
+			<div class="formInfo">
+				<p>You aren't connected to Facebook yet. Click the button to connect this application with your Facebook account.</p>
+			</div>
+			<p>
+				<button type="submit">Connect to Facebook</button>
+			</p>
+		</form>
+	</div>
 
     <!-- Footer -->
     <footer>
@@ -140,8 +113,5 @@
     </footer>
 
 	<script src="/webjars/jquery/2.1.3/dist/jquery.min.js"></script>
-	<script src="/webjars/bootstrap/3.3.4/dist/js/bootstrap.min.js"></script>
-</body>
+	<script src="/webjars/bootstrap/3.3.4/dist/js/bootstrap.min.js"></script></body>
 </html>
-
-

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -39,6 +41,14 @@
                     <li>
                         <a href="http://millky.com/@origoni/folder/30/post/list">자바 블로그 개발하기</a>
                     </li>
+                    <li>
+					<c:if test="${user!=null}">   
+						<form action="/user/logout" method="post">
+							<button type="submit" class="btn">Disconnect</button>
+							<input type="hidden" name="_csrf" value="${_csrf.token}"></input>
+						</form>
+					</c:if>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -55,7 +65,7 @@
                     <div class="post-heading">
                         <h1><c:out value="${post.title}" escapeXml="true"></c:out></h1>
                         <h2 class="subheading"><c:out value="${post.subtitle}" escapeXml="true"></c:out></h2>
-                        <span class="meta">Posted by <a href="#">Origoni</a> on ${post.regDate}</span>
+                        <span class="meta">Posted by <a href="#">${post.name}</a> on ${post.regDate}</span>
                     </div>
                 </div>
             </div>
@@ -123,7 +133,6 @@
 
 	<script src="/webjars/jquery/2.1.3/dist/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/3.3.4/dist/js/bootstrap.min.js"></script>
-	<script src="/webjars/origoni-startbootstrap-clean-blog/1.0.3/js/clean-blog.min.js"></script>
 </body>
 </html>
 
