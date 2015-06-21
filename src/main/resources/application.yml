@@ -4,8 +4,8 @@ spring:
         suffix: .jsp
     social:
         facebook:
-            appId: 487654301400466
+            appId: 487661008066462
             appSecret: 
 logging:
     level:
-        com.millky.blog: DEBUG
+        com.millky.blog: INFO
