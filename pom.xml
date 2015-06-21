@@ -5,7 +5,7 @@
 
 	<groupId>com.millky.blog</groupId>
 	<artifactId>spring-blog</artifactId>
-	<version>0.0.12-SNAPSHOT</version>
+	<version>0.0.14-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>SpringBlog</name>
@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.2.4.RELEASE</version>
+		<version>1.2.5.RELEASE</version>
 		<relativePath />
 	</parent>
 
@@ -66,7 +66,7 @@
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>bootstrap</artifactId>
-			<version>3.3.4</version>
+			<version>3.3.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars.bower</groupId>

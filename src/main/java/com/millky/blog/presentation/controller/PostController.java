@@ -1,20 +1,14 @@
 package com.millky.blog.presentation.controller;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.validation.Valid;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.social.connect.Connection;
-import org.springframework.social.connect.ConnectionData;
-import org.springframework.social.connect.ConnectionRepository;
-import org.springframework.social.facebook.api.Facebook;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.millky.blog.domain.model.UserSession;
 import com.millky.blog.domain.model.entity.Post;
 import com.millky.blog.infrastructure.dao.PostDao;
 
@@ -32,20 +27,16 @@ public class PostController {
 	@Autowired
 	private PostDao postDao;
 
-	@Autowired
-	private ConnectionRepository connectionRepository;
-
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String form(Post post) {
-		return "form";
+		return "post/form";
 	}
 
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String write(@Valid Post post, BindingResult bindingResult) {
-		User user = getConnect();
+	public String write(@Valid Post post, BindingResult bindingResult, UserSession user) {
 
 		if (bindingResult.hasErrors()) {
-			return "form";
+			return "post/form";
 		}
 
 		post.setRegDate(LocalDateTime.now());
@@ -55,14 +46,12 @@ public class PostController {
 	}
 
 	@RequestMapping("/list")
-	public String list(Model model) {
-		List<Post> postList = postDao.findAll();
-		model.addAttribute("postList", postList);
+	public String list(Model model,
+			@PageableDefault(sort = { "id" }, direction = Direction.DESC, size = 5) Pageable pageable) {
+		Page<Post> postPage = postDao.findAll(pageable);
+		model.addAttribute("postPage", postPage);
 
-		User user = getConnect();
-		model.addAttribute("user", user);
-
-		return "list";
+		return "post/list";
 	}
 
 	@RequestMapping("/{id}")
@@ -70,15 +59,11 @@ public class PostController {
 		Post post = postDao.findOne(id);
 		model.addAttribute("post", post);
 
-		User user = getConnect();
-		model.addAttribute("user", user);
-
-		return "post";
+		return "post/post";
 	}
 
 	@RequestMapping("/{id}/delete")
-	public String delete(@PathVariable int id) {
-		User user = getConnect();
+	public String delete(@PathVariable int id, UserSession user) {
 
 		Post post = postDao.findOne(id);
 		if (post.getUserId().equals(user.getProviderUserId())) {
@@ -89,23 +74,21 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-	public String editor(Model model, @PathVariable int id) {
-		User user = getConnect();
+	public String editor(Model model, @PathVariable int id, UserSession user) {
 
 		Post post = postDao.findOne(id);
 		if (post.getUserId().equals(user.getProviderUserId())) {
 			model.addAttribute("post", post);
 		}
 
-		return "form";
+		return "post/form";
 	}
 
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-	public String edit(@Valid Post post, BindingResult bindingResult) {
-		User user = getConnect();
+	public String edit(@Valid Post post, BindingResult bindingResult, UserSession user) {
 
 		if (bindingResult.hasErrors()) {
-			return "form";
+			return "post/form";
 		}
 
 		Post oldPost = postDao.findOne(post.getId());
@@ -116,24 +99,6 @@ public class PostController {
 			return "redirect:/post/" + postDao.save(oldPost).getId();
 		}
 
-		return "form";
-	}
-
-	private User getConnect() {
-		Connection<Facebook> connection = connectionRepository.findPrimaryConnection(Facebook.class);
-		if (connection == null) {
-			return null;
-		}
-		ConnectionData data = connection.createData();
-		return new User(data.getProviderUserId(), data.getDisplayName());
-	}
-
-	@Getter
-	@Setter
-	@NoArgsConstructor
-	@AllArgsConstructor
-	public static class User {
-		String providerUserId;
-		String displayName;
+		return "post/form";
 	}
 }

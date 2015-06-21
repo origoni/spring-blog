@@ -3,63 +3,79 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ include file="/WEB-INF/jspf/head.jspf"%>
 <title>Hello Millky</title>
-<link rel="stylesheet" href="/webjars/bootstrap/3.3.4/dist/css/bootstrap.min.css">
 </head>
 <body>
 	<div class="container">
-		<c:out value="<xmp>" escapeXml="true"></c:out>
 		<h2>Hello! ${name}</h2>
 		<div>JSP version</div>
-		<a href="/post/list"><button type="button" class="btn btn-lg btn-success btn-block">Spring Blog</button></a>
-		
-		<div class="page-header">
-        <h1>Buttons</h1>
-      </div>
-      <p>
-        <button type="button" class="btn btn-lg btn-default">Default</button>
-        <button type="button" class="btn btn-lg btn-primary">Primary</button>
-        <button type="button" class="btn btn-lg btn-success">Success</button>
-        <button type="button" class="btn btn-lg btn-info">Info</button>
-        <button type="button" class="btn btn-lg btn-warning">Warning</button>
-        <button type="button" class="btn btn-lg btn-danger">Danger</button>
-        <button type="button" class="btn btn-lg btn-link">Link</button>
-      </p>
-      <p>
-        <button type="button" class="btn btn-default">Default</button>
-        <button type="button" class="btn btn-primary">Primary</button>
-        <button type="button" class="btn btn-success">Success</button>
-        <button type="button" class="btn btn-info">Info</button>
-        <button type="button" class="btn btn-warning">Warning</button>
-        <button type="button" class="btn btn-danger">Danger</button>
-        <button type="button" class="btn btn-link">Link</button>
-      </p>
-      <p>
-        <button type="button" class="btn btn-sm btn-default">Default</button>
-        <button type="button" class="btn btn-sm btn-primary">Primary</button>
-        <button type="button" class="btn btn-sm btn-success">Success</button>
-        <button type="button" class="btn btn-sm btn-info">Info</button>
-        <button type="button" class="btn btn-sm btn-warning">Warning</button>
-        <button type="button" class="btn btn-sm btn-danger">Danger</button>
-        <button type="button" class="btn btn-sm btn-link">Link</button>
-      </p>
-      <p>
-        <button type="button" class="btn btn-xs btn-default">Default</button>
-        <button type="button" class="btn btn-xs btn-primary">Primary</button>
-        <button type="button" class="btn btn-xs btn-success">Success</button>
-        <button type="button" class="btn btn-xs btn-info">Info</button>
-        <button type="button" class="btn btn-xs btn-warning">Warning</button>
-        <button type="button" class="btn btn-xs btn-danger">Danger</button>
-        <button type="button" class="btn btn-xs btn-link">Link</button>
-      </p>
+		<a href="/post/list">
+			<button type="button" class="btn btn-lg btn-success btn-block">Spring Blog 라이브 데모 들어가기</button>
+		</a>
+
+		<article>
+			<h1>SpringBlog from Millky</h1>
+			<p>
+				밀키(millky.com)에서 블로그 부분을 뽑아(?) 오픈소스 합니다. <a href="http://millky.com/@origoni">http://millky.com/@origoni</a><br>
+				단지 코드만 공개한는 것이 아니라. 개발 과정을 같이 공개하려 합니다.<br> 문의사항은 밀키, 페이스북, 깃헙 등 모두 열려 있습니다 ^^;
+			</p>
+
+			<h3>DEMO</h3>
+			<ul>
+				<li><a href="http://blog.millky.com/post/list">http://blog.millky.com/post/list</a></li>
+			</ul>
+
+			<h3>관련 링크</h3>
+			<ul>
+				<li><a href="http://millky.com/">http://millky.com/</a></li>
+				<li><a href="http://millky.com/@origoni/folder/30/post/list">http://millky.com/@origoni/folder/30/post/list</a></li>
+				<li><a href="https://github.com/origoni/Spring-Blog">https://github.com/origoni/Spring-Blog</a></li>
+			</ul>
+
+			<h3>Project Convention</h3>
+
+			<h4>Environment</h4>
+			<ul>
+				<li>Java version: 1.8.0+</li>
+				<li>Spring Boot version: 1.2.4+</li>
+				<li>Maven 3.x+</li>
+				<li>Default Encoding: UTF-8</li>
+				<li>Default SCM : git</li>
+			</ul>
+
+			<h4>Package Structure</h4>
+			<pre>
+				<code>
+com.millky.blog
+    └── application
+        └── configuration
+        └── utility
+    └── domain
+        └── model
+            └── command
+            └── entity
+        └── repository
+        └── service
+    └── infrastructure
+        └── dao
+    └── presentation
+        └── controller
+            └── rest
+        └── support
+            └── result
+</code>
+			</pre>
+
+			<h4>프로젝트 설정</h4>
+			<ol>
+				<li>STS 설치 -&gt; <a href="http://millky.com/@origoni/post/1100">http://millky.com/@origoni/post/1100</a></li>
+				<li>Lombok 설치 -&gt; <a href="https://projectlombok.org/">https://projectlombok.org/</a></li>
+			</ol>
+		</article>
 	</div>
 
-	<script src="/webjars/jquery/2.1.3/dist/jquery.min.js"></script>
-	<script src="/webjars/bootstrap/3.3.4/dist/js/bootstrap.min.js"></script>
+	<%@ include file="/WEB-INF/jspf/footer.jspf"%>
 </body>
 </html>
 
