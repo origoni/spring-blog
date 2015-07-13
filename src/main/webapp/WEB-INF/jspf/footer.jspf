@@ -37,3 +37,17 @@
 
 <script src="/webjars/jquery/2.1.3/dist/jquery.min.js"></script>
 <script src="/webjars/bootstrap/3.3.5/dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+</script>

@@ -21,7 +21,7 @@
                         <a href="http://millky.com/@origoni/folder/30/post/list">자바 블로그 개발하기</a>
                     </li>
                     <li>
-					<c:if test="${user!=null}">   
+					<c:if test="${_USER!=null}">   
 						<form action="/user/logout" method="post">
 							<button type="submit" class="btn">Disconnect</button>
 							<input type="hidden" name="_csrf" value="${_csrf.token}"></input>
@@ -31,4 +31,26 @@
                 </ul>
             </div>
         </div>
+    </nav>
+    
+	<!-- Navigation -->
+	<!-- http://ironsummitmedia.github.io/startbootstrap-stylish-portfolio/ -->
+    <a id="menu-toggle" href="#" class="btn btn-dark toggle"><i class="fa fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="/post/list">SpringBlog</a>
+                <a id="menu-close" href="#" class="btn btn-light pull-right toggle">
+	            	<i class="fa fa-times"></i>
+	            </a>
+            </li>
+			<li class="sidebar-brand">
+                Category
+            </li>
+			<c:forEach items="${_CATEGORY_LIST}" var="category">
+				<li>
+					<a href="/post/list?category=${category.id}"><c:out value="${category.name}" escapeXml="true" /></a>
+				</li>
+			</c:forEach>
+		</ul>
     </nav>

@@ -4,8 +4,12 @@ spring:
         suffix: .jsp
     social:
         facebook:
-            appId: 487661008066462
+            appId: 487654301400466
             appSecret: 
+    jpa:
+        generate-ddl: true
+        show-sql: true
+   
 logging:
     level:
-        com.millky.blog: INFO
+        com.millky.blog: DEBUG

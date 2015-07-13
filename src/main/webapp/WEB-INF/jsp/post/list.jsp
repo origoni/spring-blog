@@ -37,20 +37,20 @@
                             <c:out value="${post.subtitle}" escapeXml="true"></c:out>
                         </h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="#">${post.name}</a> on ${post.regDate}</p>
+                    <p class="post-meta">Posted by <a href="#">${post.name}</a> in <a href="/post/list?category=${post.category.id}"><c:out value="${post.category.name}" escapeXml="true" /></a> on ${post.regDate}</p>
                 </div>
                 <hr>
 			</c:forEach>
-			
+
                 <ul class="pager">
                 	<c:if test="${!postPage.first}">
                     <li class="previous">
-                        <a href="?page=${postPage.number-1}">&larr; Newer Posts</a>
+                        <a href="?<c:if test="${categoryId > 0}">category=${categoryId}&</c:if>page=${postPage.number-1}">&larr; Newer Posts</a>
                     </li>
                     </c:if>
                     <c:if test="${!postPage.last}">
                     <li class="next">
-                        <a href="?page=${postPage.number+1}">Older Posts &rarr;</a>
+                        <a href="?<c:if test="${categoryId > 0}">category=${categoryId}&</c:if>page=${postPage.number+1}">Older Posts &rarr;</a>
                     </li>
                     </c:if>
                 </ul>

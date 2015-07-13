@@ -18,7 +18,7 @@
                     <div class="post-heading">
                         <h1><c:out value="${post.title}" escapeXml="true"></c:out></h1>
                         <h2 class="subheading"><c:out value="${post.subtitle}" escapeXml="true"></c:out></h2>
-                        <span class="meta">Posted by <a href="#">${post.name}</a> on ${post.regDate}</span>
+                        <span class="meta">Posted by <a href="#">${post.name}</a> in <a href="/post/list?category=${post.category.id}"><c:out value="${post.category.name}" escapeXml="true" /></a> on ${post.regDate}</span>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             
-            <c:if test="${user!=null && user.providerUserId == post.userId}"> 
+            <c:if test="${_USER!=null && _USER.providerUserId == post.userId}"> 
             <div class="pull-right">
             	<a href="/post/${post.id}/edit">
             		<button type="button" class="btn btn-warning">Edit</button>

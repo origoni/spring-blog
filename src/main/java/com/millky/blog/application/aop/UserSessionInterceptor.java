@@ -26,7 +26,7 @@ public class UserSessionInterceptor extends HandlerInterceptorAdapter {
 		if (connection != null) {
 			ConnectionData data = connection.createData();
 
-			request.setAttribute("user",
+			request.setAttribute("_USER",
 					new UserSession(data.getProviderUserId(), data.getImageUrl(), data.getDisplayName()));
 		}
 
