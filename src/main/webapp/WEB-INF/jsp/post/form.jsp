@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,15 +16,15 @@
   html{border-top:10px #1abf89 solid;}
   body{width:750px;margin:0 auto;padding:7% 20px 20px;}
   @media all and (max-width:1024px){ body, pre a{width:85%;} }
+  @media (max-width: 767px) { body, pre a{width:95%;} body{margin:0 auto;padding:50px 5px 5px;} }
   small{color:#999;}
   #toolbar{margin-bottom:1em;position:fixed;right:20px;margin-top:5px;}
   #toolbar [class^="icon-"]:before, #toolbar [class*=" icon-"]:before{font-family:'pen'}
+  @media (max-width: 767px) { #toolbar{margin-bottom:1em;position:static;right:auto;margin-top:5px;width: 100%;} #wrap {display: flex; flex-flow: row wrap;} #toolbar {order: 2;} #post {order :1;} }
   #back{color:#1abf89;cursor:pointer;}
   #hinted{color:#1abf89;cursor:pointer;}
   #hinted.disabled{color:#666;}
   #hinted:before{content: '\e816';}
-  
-  .errorblock {border: 2px solid red;}
   .error {color: red;}
 </style>
 
@@ -49,17 +50,7 @@
 </style>
 </head>
 <body>
-
-	<div id="toolbar">
-		<span id="back" class="icon-back" onclick="history.back();">돌아가기</span><br>
-		<span id="hinted" class="icon-pre disabled" title="Toggle Markdown Hints"></span>
-		
-		<form action="/category/add" method="post" id="add_category" >
-			<input type="text" name="categoryName" class="form-control" placeholder="새로운 카테고리">
-			<input type="hidden" name="_csrf" value="${_csrf.token}">
-			<button type="submit" class="form-control">추가</button>
-		</form>
-	</div>
+<a href="https://github.com/origoni/Spring-Blog"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
 
 	<div id="custom-toolbar" class="pen-menu pen-menu" style="display: block; top: 20px; margin:0 auto;">
 	  <i class="pen-icon icon-insertimage" data-action="insertimage"></i>
@@ -83,44 +74,55 @@
 	<c:if test="${post.id == 0}"><c:url var="actionUrl" value="/post/write"/></c:if>
 	<c:if test="${post.id != 0}"><c:url var="actionUrl" value="/post/${post.id}/edit"/></c:if>
 
-	<form:form action="${actionUrl}" commandName="post" onsubmit="if($('#pen').html()!='<p><br></p>')$('#content').val($('#pen').html()); pen.destroy();" method="post">
-
-		<form:input type="hidden" path="_csrf" value="${_csrf.token}"></form:input>
-
-		<form:errors path="*" cssClass="errorblock" element="div" />
-
-		<form:input type="text" path="title" placeholder="Title"
-			style="height: 70px; width: 100%; font-size: 55px; 
-			border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 1px; outline-style: none; 
-			font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 800;" />
-		<form:errors path="title" cssClass="error" />
-
-		<form:input type="text" path="subtitle" placeholder="Subtitle (option)"
-			style="height: 60px; width: 100%; font-size: 24px; 
-			border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 1px; outline-style: none; 
-			font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;" />
-
-		<hr style="margin-top: 2px; border-top: 1px solid #999;">
-
-		<div data-toggle="pen" data-placeholder="Content" id="pen" style="min-height: 200px;"></div>
-		<form:input type="hidden" path="content" id="content" />
-		<form:errors path="content" cssClass="error" />
-
-		<div class="form-group" style="height: 30px;">
-			<label for="category" class="col-sm-2 control-label">Category</label>
-			<div class="col-sm-10">
-				<form:select path="categoryId" items="${categoryMap}" id="category" class="form-control"/>
-				<form:errors path="categoryId" cssClass="error" />
-			</div>
+	<div id="wrap">
+	
+		<div id="toolbar">
+			<span id="back" class="icon-back" onclick="history.back();">돌아가기</span><br>
+			<span id="hinted" class="icon-pre disabled" title="Toggle Markdown Hints"></span>
+			
+			<form action="/category/add" method="post" id="add_category" >
+				<input type="text" name="categoryName" class="form-control" placeholder="새로운 카테고리" required="required">
+				<input type="hidden" name="_csrf" value="${_csrf.token}">
+				<button type="submit" class="form-control">추가</button>
+			</form>
 		</div>
+	
+		<form:form action="${actionUrl}" commandName="post" id="post" onsubmit="if($('#pen').html()!='<p><br></p>')$('#content').val($('#pen').html()); pen.destroy();" method="post">
+	
+			<form:input type="hidden" path="_csrf" value="${_csrf.token}"></form:input>
 		
-		<hr>
+			<form:input type="text" path="title" placeholder="Title"
+				style="height: 70px; width: 100%; font-size: 55px; 
+				border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 1px; outline-style: none; 
+				font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 800;" />
+			<form:errors path="title" cssClass="error" />
+	
+			<form:input type="text" path="subtitle" placeholder="Subtitle (option)"
+				style="height: 60px; width: 100%; font-size: 24px; 
+				border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 1px; outline-style: none; 
+				font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;" />
+	
+			<hr style="margin-top: 2px; border-top: 1px solid #999;">
+	
+			<div data-toggle="pen" data-placeholder="Content" id="pen" style="min-height: 200px;"></div>
+			<form:input type="hidden" path="content" id="content" />
+			<form:errors path="content" cssClass="error" />
+	
+			<div class="form-group" style="height: 30px;">
+				<label for="category" class="col-sm-2 col-xs-3 control-label" style="padding-left: 5px;">Category</label>
+				<div class="col-sm-10 col-xs-9" style="padding-right: 5px;">
+					<form:select path="categoryId" items="${categoryMap}" id="category" class="form-control"/>
+					<form:errors path="categoryId" cssClass="error" />
+				</div>
+			</div>
+				
+			<button type="submit" class="btn btn-primary btn-lg btn-block">저장</button>
+	
+		</form:form>
+		
+	</div>
 
-		<button type="submit" class="btn btn-primary btn-lg btn-block">저장</button>
-
-	</form:form>
-
-	<p class="text-muted">Powered By <a href="http://millky.com">Millky</a> | WYSIWYG Editor by <a href="https://github.com/sofish/pen">Pen Editor</a></p>
+	<p class="text-muted" style="font-size: 14px;">Powered By <a href="http://millky.com">Millky</a> | WYSIWYG Editor by <a href="https://github.com/sofish/pen">Pen Editor</a></p>
 
 	<script src="/webjars/jquery/2.1.3/dist/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/3.3.5/dist/js/bootstrap.min.js"></script>
@@ -129,6 +131,7 @@
 	<script type="text/javascript">
 		$('#add_category').submit(function(event) {
 			var form = $(this);
+						
 			$.ajax({
 				type : form.attr('method'),
 				url : form.attr('action'),
@@ -168,8 +171,6 @@
 				this.classList.remove('disabled');
 			}
 		});
-
-		// 바디의 마진을 가지고 와서. 툴바의 좌측으로.
 	</script>
 </body>
 </html>

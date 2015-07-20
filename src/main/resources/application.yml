@@ -13,3 +13,7 @@ spring:
 logging:
     level:
         com.millky.blog: DEBUG
+
+error:
+    whitelabel:
+        enabled: false

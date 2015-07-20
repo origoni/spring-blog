@@ -1,11 +1,10 @@
 package com.millky.blog.domain.model.entity;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,11 +13,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 @Entity
 public class Post {
 
@@ -44,7 +41,7 @@ public class Post {
 
 	String _csrf;
 
-	LocalDateTime regDate;
+	Date regDate;
 
 	@Min(value = 1)
 	private int categoryId;
