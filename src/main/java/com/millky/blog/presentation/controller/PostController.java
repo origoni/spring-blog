@@ -18,6 +18,7 @@ import com.millky.blog.domain.model.UserSession;
 import com.millky.blog.domain.model.entity.Post;
 import com.millky.blog.domain.repository.CategoryRepository;
 import com.millky.blog.domain.repository.PostRepository;
+import com.millky.blog.domain.service.PostService;
 
 @Controller
 @RequestMapping("/post")
@@ -25,6 +26,9 @@ public class PostController {
 
 	@Autowired
 	private PostRepository postRepository;
+
+	@Autowired
+	private PostService postService;
 
 	@Autowired
 	private CategoryRepository categoryRepository;
@@ -44,7 +48,7 @@ public class PostController {
 			return "post/form";
 		}
 
-		return "redirect:/post/" + postRepository.writePost(post, user).getId();
+		return "redirect:/post/" + postService.writePost(post, user).getId();
 	}
 
 	@RequestMapping("/list")

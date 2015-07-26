@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
 <%@ include file="/WEB-INF/jspf/head.jspf" %>
-<title><c:out value="${post.title}" escapeXml="true"></c:out> : Spring Blog</title>
+<title><c:out value="${post.title}" escapeXml="true" /> : Spring Blog</title>
 </head>
 <body>
     <%@ include file="/WEB-INF/jspf/nav.jspf" %>
@@ -17,7 +17,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
                         <h1><c:out value="${post.title}" escapeXml="true"></c:out></h1>
-                        <h2 class="subheading"><c:out value="${post.subtitle}" escapeXml="true"></c:out></h2>
+                        <h2 class="subheading"><c:out value="${post.subtitle}" escapeXml="true" /></h2>
                         <span class="meta">Posted by <a href="#">${post.name}</a> in <a href="/post/list?category=${post.category.id}"><c:out value="${post.category.name}" escapeXml="true" /></a> on ${post.regDate}</span>
                     </div>
                 </div>
@@ -31,9 +31,18 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     ${post.content}
                 </div>
+                
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h3>
+				<c:forEach var="postTag" items="${post.tagList}" varStatus="status">
+					<span class="label label-primary"><c:out value="${postTag.tag.name}" escapeXml="true" /></span>
+				</c:forEach>
+				</h3>
+                </div>
             </div>
             
-            <c:if test="${_USER!=null && _USER.providerUserId == post.userId}"> 
+            <c:if test="${_USER!=null && _USER.providerUserId == post.userId}">
+            <br>
             <div class="pull-right">
             	<a href="/post/${post.id}/edit">
             		<button type="button" class="btn btn-warning">Edit</button>

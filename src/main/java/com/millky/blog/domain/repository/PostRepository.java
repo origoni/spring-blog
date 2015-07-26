@@ -43,11 +43,8 @@ public class PostRepository {
 		return post;
 	}
 
-	public Post writePost(Post post, UserSession user) {
-
+	public Post writePost(Post post) {
 		post.setRegDate(new Date());
-		post.setUserId(user.getProviderUserId());
-		post.setName(user.getDisplayName());
 
 		return postDao.save(post);
 	}
