@@ -1,9 +1,9 @@
 package com.millky.blog.domain.service;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -70,7 +70,18 @@ public class TagService {
 
 	private HashSet<String> tagNamesToHashSet(String postTagNames) {
 
-		return new HashSet<>(Arrays.asList(postTagNames.trim().replaceAll("[ ]+", " ").split(" ", 10)));
+		StringTokenizer tokenTag = new StringTokenizer(postTagNames.trim().replaceAll("[ ]+", " "), " ");
+
+		HashSet<String> hashSet = new HashSet<>();
+
+		while (tokenTag.hasMoreElements()) {
+			hashSet.add(tokenTag.nextToken());
+			if (hashSet.size() >= 10) {
+				break;
+			}
+		}
+
+		return hashSet;
 	}
 
 	private void insertTag(int postId, HashSet<String> hashSet) {

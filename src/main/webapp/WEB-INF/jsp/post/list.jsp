@@ -9,56 +9,58 @@
 <body>
 	<%@ include file="/WEB-INF/jspf/nav.jspf" %>
 
-    <header class="intro-header" style="background-image: url('/image/home-bg.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Spring Blog</h1>
-                        <hr class="small">
-                        <span class="subheading">Spring Blog form Millky</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+	<header class="intro-header" style="background-image: url('/image/home-bg.jpg')">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<div class="site-heading">
+						<h1>Spring Blog</h1>
+						<hr class="small">
+						<span class="subheading">Spring Blog form Millky</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<c:if test="${postPage.content.size()==0}">
+				글이 없습니다.
+			</c:if>
 			<c:forEach var="post" items="${postPage.content}">
 				<div class="post-preview">
-                    <a href="/post/${post.id}">
-                        <h2 class="post-title">
-                            <c:out value="${post.title}" escapeXml="true"></c:out>
-                        </h2>
-                        <h3 class="post-subtitle">
-                            <c:out value="${post.subtitle}" escapeXml="true"></c:out>
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">${post.name}</a> in <a href="/post/list?category=${post.category.id}"><c:out value="${post.category.name}" escapeXml="true" /></a> on ${post.regDate}</p>
-                </div>
-                <hr>
+					<a href="/post/${post.id}">
+						<h2 class="post-title">
+							<c:out value="${post.title}" escapeXml="true"></c:out>
+						</h2>
+						<h3 class="post-subtitle">
+							<c:out value="${post.subtitle}" escapeXml="true"></c:out>
+						</h3>
+					</a>
+					<p class="post-meta">Posted by <a href="#">${post.name}</a> in <a href="/category/${post.category.id}/post/list"><c:out value="${post.category.name}" escapeXml="true" /></a> on ${post.regDate}</p>
+				</div>
+				<hr>
 			</c:forEach>
 
-                <ul class="pager">
-                	<c:if test="${!postPage.first}">
-                    <li class="previous">
-                        <a href="?<c:if test="${categoryId > 0}">category=${categoryId}&</c:if>page=${postPage.number-1}">&larr; Newer Posts</a>
-                    </li>
-                    </c:if>
-                    <c:if test="${!postPage.last}">
-                    <li class="next">
-                        <a href="?<c:if test="${categoryId > 0}">category=${categoryId}&</c:if>page=${postPage.number+1}">Older Posts &rarr;</a>
-                    </li>
-                    </c:if>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <%@ include file="/WEB-INF/jspf/footer.jspf" %>
+				<ul class="pager">
+					<c:if test="${!postPage.first}">
+					<li class="previous">
+						<a href="?page=${postPage.number-1}">&larr; Newer Posts</a>
+					</li>
+					</c:if>
+					<c:if test="${!postPage.last}">
+					<li class="next">
+						<a href="?page=${postPage.number+1}">Older Posts &rarr;</a>
+					</li>
+					</c:if>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<%@ include file="/WEB-INF/jspf/footer.jspf" %>
 </body>
 </html>
 

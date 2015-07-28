@@ -21,13 +21,18 @@ public class UserSessionInterceptor extends HandlerInterceptorAdapter {
 
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-		Connection<Facebook> connection = connectionRepository.findPrimaryConnection(Facebook.class);
+		Connection<Facebook> connection;
+
+		try {
+			connection = connectionRepository.findPrimaryConnection(Facebook.class);
+		} catch (Exception e) {
+			connection = null;
+		}
 
 		if (connection != null) {
 			ConnectionData data = connection.createData();
 
-			request.setAttribute("_USER",
-					new UserSession(data.getProviderUserId(), data.getImageUrl(), data.getDisplayName()));
+			request.setAttribute("_USER", new UserSession(data.getProviderUserId(), data.getImageUrl(), data.getDisplayName()));
 		}
 
 		return true;
