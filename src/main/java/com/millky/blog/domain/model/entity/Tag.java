@@ -17,7 +17,6 @@ public class Tag {
 
 	public Tag(String tagName) {
 		this.name = tagName;
-		this.useCount = 1;
 		this.updateDate = new Date();
 		this.regDate = new Date();
 	}

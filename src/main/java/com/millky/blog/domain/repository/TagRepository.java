@@ -31,4 +31,11 @@ public class TagRepository {
 		tag.setUpdateDate(new Date());
 		tag.setUseCount(tag.getUseCount() + 1);
 	}
+
+	public void decreaseUseCount(int tagIdx) {
+
+		Tag tag = tagDao.findOne(tagIdx);
+		tag.setUpdateDate(new Date());
+		tag.setUseCount(tag.getUseCount() - 1);
+	}
 }

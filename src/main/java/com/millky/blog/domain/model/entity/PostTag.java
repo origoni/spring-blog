@@ -11,8 +11,10 @@ import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
+@ToString(exclude = "post")
 @Entity
 @NoArgsConstructor
 public class PostTag {

@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.millky.blog.domain.model.entity.Post;
 import com.millky.blog.domain.model.entity.PostTag;
 import com.millky.blog.infrastructure.dao.PostTagDao;
 
@@ -16,12 +15,23 @@ public class PostTagRepository {
 	@Autowired
 	PostTagDao postTagDao;
 
+	@Autowired
+	TagRepository tagRepository;
+
 	public void insertPostTag(PostTag postTag) {
 		postTag.setRegDate(new Date());
 		postTagDao.save(postTag);
+
+		tagRepository.increaseUseCount(postTag.getTagId());
 	}
 
-	public List<PostTag> findByPost(Post post) {
-		return postTagDao.findByPost(post);
+	public List<PostTag> findByPostId(int postId) {
+		return postTagDao.findByPostId(postId);
+	}
+
+	public void deletePostTag(int postTagIdx) {
+		postTagDao.delete(postTagIdx);
+
+		tagRepository.decreaseUseCount(postTagIdx);
 	}
 }

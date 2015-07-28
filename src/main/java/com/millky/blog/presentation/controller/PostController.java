@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.millky.blog.domain.model.UserSession;
-import com.millky.blog.domain.model.entity.Post;
+import com.millky.blog.domain.model.command.PostCommand;
 import com.millky.blog.domain.repository.CategoryRepository;
 import com.millky.blog.domain.repository.PostRepository;
 import com.millky.blog.domain.service.PostService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping("/post")
 public class PostController {
@@ -34,7 +37,7 @@ public class PostController {
 	private CategoryRepository categoryRepository;
 
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
-	public String form(Post post, Model model) {
+	public String form(PostCommand post, Model model) {
 
 		model.addAttribute("categoryMap", categoryRepository.getCategoryMap());
 
@@ -42,7 +45,7 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String write(@Valid Post post, BindingResult bindingResult, UserSession user) {
+	public String write(@Valid PostCommand post, BindingResult bindingResult, UserSession user) {
 
 		if (bindingResult.hasErrors()) {
 			return "post/form";
@@ -67,13 +70,15 @@ public class PostController {
 
 		model.addAttribute("post", postRepository.getPostById(id));
 
+		log.debug("post = {}", postRepository.getPostById(id));
+
 		return "post/post";
 	}
 
 	@RequestMapping("/{id}/delete")
 	public String delete(@PathVariable int id, UserSession user) {
 
-		postRepository.deletePost(id, user);
+		postService.deletePost(id, user);
 
 		return "redirect:/post/list";
 	}
@@ -81,19 +86,19 @@ public class PostController {
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
 	public String editor(Model model, @PathVariable int id, UserSession user) {
 
-		model.addAttribute("post", postRepository.findByIdAndUser(id, user));
+		model.addAttribute("postCommand", new PostCommand(postRepository.findByIdAndUser(id, user)));
 		model.addAttribute("categoryMap", categoryRepository.getCategoryMap());
 
 		return "post/form";
 	}
 
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-	public String edit(@Valid Post post, BindingResult bindingResult, UserSession user) {
+	public String edit(@Valid PostCommand post, BindingResult bindingResult, UserSession user) {
 
 		if (bindingResult.hasErrors()) {
 			return "post/form";
 		}
 
-		return "redirect:/post/" + postRepository.editPost(post, user).getId();
+		return "redirect:/post/" + postService.editPost(post, user).getId();
 	}
 }

@@ -34,7 +34,7 @@
                 
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h3>
-				<c:forEach var="postTag" items="${post.tagList}" varStatus="status">
+				<c:forEach var="postTag" items="${post.postTagList}" varStatus="status">
 					<span class="label label-primary"><c:out value="${postTag.tag.name}" escapeXml="true" /></span>
 				</c:forEach>
 				</h3>

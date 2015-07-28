@@ -1,22 +1,14 @@
 package com.millky.blog.domain.service;
 
-import java.util.Arrays;
-import java.util.HashSet;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.millky.blog.domain.model.UserSession;
+import com.millky.blog.domain.model.command.PostCommand;
 import com.millky.blog.domain.model.entity.Post;
-import com.millky.blog.domain.model.entity.PostTag;
-import com.millky.blog.domain.model.entity.Tag;
+import com.millky.blog.domain.model.exception.IllegalUserException;
 import com.millky.blog.domain.repository.PostRepository;
-import com.millky.blog.domain.repository.PostTagRepository;
-import com.millky.blog.domain.repository.TagRepository;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Service
 public class PostService {
 
@@ -24,36 +16,43 @@ public class PostService {
 	private PostRepository postRepository;
 
 	@Autowired
-	private TagRepository tagRepository;
+	private TagService tagService;
 
-	@Autowired
-	private PostTagRepository postTagRepository;
+	public Post writePost(PostCommand postCommand, UserSession user) {
 
-	public Post writePost(Post post, UserSession user) {
+		postCommand.setUserId(user.getProviderUserId());
+		postCommand.setName(user.getDisplayName());
 
-		post.setUserId(user.getProviderUserId());
-		post.setName(user.getDisplayName());
+		Post post = postRepository.writePost(new Post(postCommand));
 
-		Post npost = postRepository.writePost(post);
+		postCommand.setId(post.getId());
 
-		HashSet<String> hashSet = new HashSet<>(
-				Arrays.asList(post.getTags().trim().replaceAll("(\\p{Space}){2,}", "").split(" ", 10)));
+		tagService.insertPostTag(postCommand);
 
-		log.debug("hashSet = {}", hashSet);
+		return post;
+	}
 
-		for (String tagName : hashSet) {
-			if (tagName.equals("")) {
-				continue;
-			}
+	public Post editPost(PostCommand postCommand, UserSession user) throws RuntimeException {
 
-			Tag tag = tagRepository.findTagByTagName(tagName);
-			if (tag == null) {
-				tag = tagRepository.createTag(new Tag(tagName));
-			}
-
-			postTagRepository.insertPostTag(new PostTag(npost.getId(), tag.getId()));
+		if (!postRepository.isThisUserPostWriter(user, postCommand.getId())) {
+			throw new IllegalUserException("Not the Writer.");
 		}
 
-		return npost;
+		Post post = postRepository.editPost(postCommand);
+
+		tagService.updatePostTag(postCommand);
+
+		return post;
+	}
+
+	public void deletePost(int postId, UserSession user) throws IllegalUserException, IllegalArgumentException {
+
+		if (!postRepository.isThisUserPostWriter(user, postId)) {
+			throw new IllegalUserException("Not the Writer.");
+		}
+
+		tagService.deletePostTagByPostId(postId);
+
+		postRepository.deletePost(postId);
 	}
 }

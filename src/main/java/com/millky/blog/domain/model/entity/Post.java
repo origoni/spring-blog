@@ -12,14 +12,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
+import org.springframework.beans.BeanUtils;
+
+import com.millky.blog.domain.model.command.PostCommand;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Post {
 
 	@Id
@@ -29,32 +32,28 @@ public class Post {
 	String userId;
 	String name;
 
-	@NotNull
-	@Size(min = 1, max = 255)
 	@Column(nullable = false)
 	String title;
 
-	@Size(max = 255)
 	String subtitle;
 
-	@NotNull
-	@Size(min = 1, max = 100000000)
 	@Column(length = 100000000)
 	String content;
 
-	String _csrf;
-
 	Date regDate;
 
-	@Min(value = 1)
+	Date updateDate;
+
 	private int categoryId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "categoryId", insertable = false, updatable = false)
 	private Category category;
 
-	String tags;
+	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = { CascadeType.MERGE })
+	private List<PostTag> postTagList;
 
-	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<PostTag> tagList;
+	public Post(PostCommand postCommand) {
+		BeanUtils.copyProperties(postCommand, this);
+	}
 }
