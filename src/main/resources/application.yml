@@ -5,7 +5,7 @@ spring:
     social:
         facebook:
             appId: 487654301400466
-            appSecret: 
+            appSecret: 3ec76bf19fbfeaf187a6673d1cf16411
     jpa:
         generate-ddl: true
         show-sql: true

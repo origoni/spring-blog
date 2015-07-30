@@ -49,7 +49,7 @@
             </li>
 			<c:forEach items="${_CATEGORY_LIST}" var="category">
 				<li>
-					<a href="/post/list?category=${category.id}"><c:out value="${category.name}" escapeXml="true" /></a>
+					<a href="/category/${category.id}/post/list"><c:out value="${category.name}" escapeXml="true" /></a>
 				</li>
 			</c:forEach>
 			

@@ -1,43 +1,51 @@
 # SpringBlog from Millky
+### Spring Boot base Open-source Blog
 
 밀키(millky.com)에서 블로그 부분을 뽑아(?) 오픈소스 합니다.
-http://millky.com/@origoni
+
+```
+SpringBoot + Spring Data JPA + Spring Social + ...
+```
 
 단지 코드만 공개한는 것이 아니라. 개발 과정을 같이 공개하려 합니다.
 
-### DEMO
+### LIVE DEMO
 - http://blog.millky.com/post/list
-
-- 해당코드 수정없이(appSecret 제외) 사용합니다.
+- 해당코드 수정없이 사용합니다.
 - 어떠한 정보도 기록하지 않습니다.
-- 많은 테스트 부탁드립니다.
+
+### Quick Start
+JDK 1.8 or later
+Maven 3.0+
+
+```
+git clone https://github.com/origoni/Spring-Blog
+cd Spring-Blog
+mvn spring-boot:run
+```
+
+http://localhost:8080/
 
 ### 관련 링크
 - http://millky.com/
+- http://millky.com/@origoni
 - http://millky.com/@origoni/folder/30/post/list
 
 ### Project Convention
-
-
-#### Environment
-- Java version: 8 Update 45
-- Spring Boot version: 1.2.5
-- Maven version: 3.3.3
-- Lombok version: 1.16.4
-- Default Encoding: UTF-8
-- Default SCM : git
 
 #### Package Structure
 
 ```
 com.millky.blog
     └── application
+        └── aop(?)
         └── configuration
         └── utility
     └── domain
         └── model
             └── command
             └── entity
+            └── exception
         └── repository
         └── service
     └── infrastructure
@@ -48,6 +56,14 @@ com.millky.blog
         └── support
             └── result
 ```
+
+#### Environment
+- Java version: 8 Update 45
+- Spring Boot version: 1.2.5
+- Maven version: 3.3.3
+- Lombok version: 1.16.4
+- Default Encoding: UTF-8
+- Default SCM : git
 
 #### 프로젝트 설정
 1. STS 설치 -> http://millky.com/@origoni/post/1100
