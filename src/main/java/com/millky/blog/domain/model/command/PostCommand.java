@@ -33,7 +33,7 @@ public class PostCommand {
 	String subtitle;
 
 	@NotNull
-	@Size(min = 1, max = 100000000)
+	@Size(min = 1)
 	String content;
 
 	Date regDate;
