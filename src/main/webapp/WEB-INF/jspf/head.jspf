@@ -6,129 +6,125 @@
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="/webjars/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/webjars/origoni-startbootstrap-clean-blog/1.0.3/css/clean-blog.min.css">
-<link rel="alternate" type="application/rss+xml" title="Spring Blog (RSS 2.0)" href="http://blog.millky.com/rss/post/list"/>
+<!-- <link rel="stylesheet" href="/webjars/jQCloud/1.0.3/jqcloud/jqcloud.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud.css">
+<link rel="alternate" type="application/rss+xml" title="Spring Blog (RSS 2.0)" href="http://blog.millky.com/rss/post/list" />
 
 <style type="text/css">
 
 /* Custom Button Styles */
-
 .btn-dark {
-    border-radius: 0;
-    color: #fff;
-    background-color: rgba(0,0,0,0.4);
-
+	border-radius: 0;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.4);
 	padding: 10px 16px;
 	font-size: 18px;
 	line-height: 1.3333333;
 }
 
-.btn-dark:hover,
-.btn-dark:focus,
-.btn-dark:active {
-    color: #fff;
-    background-color: rgba(0,0,0,0.7);
+.btn-dark:hover, .btn-dark:focus, .btn-dark:active {
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.7);
 }
 
 .btn-light {
-    border-radius: 0;
-    color: #333;
-
-	padding: 10px 30px 10px 0;
+	border-radius: 0;
+	color: #333;
+	padding: 10px 20px 10px 0;
 	font-size: 18px;
 	line-height: 1.3333333;
 }
 
-
 /* Side Menu */
-
 #sidebar-wrapper {
-    z-index: 1000;
-    position: fixed;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    margin-right: -250px;
-    overflow-y: auto;
-    background: #222;
-    -webkit-transition: all 0.4s ease 0s;
-    -moz-transition: all 0.4s ease 0s;
-    -ms-transition: all 0.4s ease 0s;
-    -o-transition: all 0.4s ease 0s;
-    transition: all 0.4s ease 0s;
+	z-index: 1000;
+	position: fixed;
+	right: 0;
+	width: 250px;
+	height: 100%;
+	margin-right: -250px;
+	overflow-y: auto;
+	background: #222;
+	-webkit-transition: all 0.4s ease 0s;
+	-moz-transition: all 0.4s ease 0s;
+	-ms-transition: all 0.4s ease 0s;
+	-o-transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s;
 }
 
 .sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+	position: absolute;
+	top: 0;
+	width: 250px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
+	text-indent: 20px;
+	line-height: 40px;
 }
 
 .sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #999;
+	display: block;
+	text-decoration: none;
+	color: #999;
 }
 
 .sidebar-nav li a:hover {
-    text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
+	text-decoration: none;
+	color: #fff;
+	background: rgba(255, 255, 255, 0.2);
 }
 
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+	text-decoration: none;
 }
 
-.sidebar-nav > .sidebar-brand {
-    height: 55px;
-    font-size: 18px;
-    line-height: 55px;
+.sidebar-nav>.sidebar-brand {
+	height: 55px;
+	font-size: 18px;
+	line-height: 55px;
 }
 
-.sidebar-nav > .sidebar-brand a {
-    color: #999;
+.sidebar-nav>.sidebar-brand a {
+	color: #999;
 }
 
-.sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
-    background: none;
+.sidebar-nav>.sidebar-brand a:hover {
+	color: #fff;
+	background: none;
 }
 
 .sidebar-nav .divider {
-    height: 1px;
-    margin: 9px 0;
-    overflow: hidden;
-    background-color: #444;
+	height: 1px;
+	margin: 9px 0;
+	overflow: hidden;
+	background-color: #444;
 }
 
 #menu-toggle {
-    z-index: 1;
-    position: fixed;
-    top: 55px;
-    right: 15px;
-    color: #fff;
+	z-index: 1;
+	position: fixed;
+	top: 5px;
+	right: 5px;
+	color: #fff;
 }
 
 #sidebar-wrapper.active {
-    right: 250px;
-    width: 250px;
-    -webkit-transition: all 0.4s ease 0s;
-    -moz-transition: all 0.4s ease 0s;
-    -ms-transition: all 0.4s ease 0s;
-    -o-transition: all 0.4s ease 0s;
-    transition: all 0.4s ease 0s;
+	right: 250px;
+	width: 250px;
+	-webkit-transition: all 0.4s ease 0s;
+	-moz-transition: all 0.4s ease 0s;
+	-ms-transition: all 0.4s ease 0s;
+	-o-transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s;
 }
 
 .toggle {
-    margin: 5px 5px 0 0;
+	top: 5px;
+	right: 0px;
+	position: absolute;
 }
 </style>

@@ -2,8 +2,6 @@ package com.millky.blog.domain.repository;
 
 import java.util.Date;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -61,7 +59,6 @@ public class PostRepository {
 		postDao.delete(id);
 	}
 
-	@Transactional
 	public Post editPost(PostCommand postCommand) {
 		Post post = getPostById(postCommand.getId());
 

@@ -1,5 +1,7 @@
 package com.millky.blog.domain.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ public class PostService {
 	@Autowired
 	private TagService tagService;
 
+	@Transactional
 	public Post writePost(PostCommand postCommand, UserSession user) {
 
 		postCommand.setUserId(user.getProviderUserId());
@@ -32,6 +35,7 @@ public class PostService {
 		return post;
 	}
 
+	@Transactional
 	public Post editPost(PostCommand postCommand, UserSession user) throws RuntimeException {
 
 		if (!postRepository.isThisUserPostWriter(user, postCommand.getId())) {
@@ -45,6 +49,7 @@ public class PostService {
 		return post;
 	}
 
+	@Transactional
 	public void deletePost(int postId, UserSession user) throws IllegalUserException, IllegalArgumentException {
 
 		if (!postRepository.isThisUserPostWriter(user, postId)) {

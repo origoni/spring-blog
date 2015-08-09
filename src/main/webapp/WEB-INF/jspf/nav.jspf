@@ -2,51 +2,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <a href="https://github.com/origoni/Spring-Blog"><img style="position: absolute; top: 0; left: 0; border: 0; z-index: 5;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
 
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/post/list">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpringBlog</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/post/write">Write Post</a>
-                    </li>
-                    <li>
-                        <a href="http://millky.com/@origoni/folder/30/post/list">자바 블로그 개발하기</a>
-                    </li>
-                    <li>
-					<c:if test="${_USER!=null}">
-						<form action="/user/logout" method="post">
-							<button type="submit" class="btn">Disconnect</button>
-							<input type="hidden" name="_csrf" value="${_csrf.token}"></input>
-						</form>
-					</c:if>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    <a id="menu-toggle" href="#" class="btn btn-dark toggle"><i class="fa fa-bars"></i></a>
-    <nav id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="/post/list">SpringBlog</a>
-                <a id="menu-close" href="#" class="btn btn-light pull-right toggle">
-	            	<i class="fa fa-times"></i>
-	            </a>
-            </li>
+	<a id="menu-toggle" href="#" class="btn btn-dark toggle"><i class="fa fa-bars"></i></a>
+	<nav id="sidebar-wrapper">
+		<ul class="sidebar-nav">
 			<li class="sidebar-brand">
-                Category
-            </li>
+				<a href="/post/list">SpringBlog</a>
+				<a id="menu-close" href="#" class="btn btn-light pull-right toggle">
+					<i class="fa fa-times"></i>
+				</a>
+			</li>
+			<li class="sidebar-brand">
+				Category
+			</li>
 			<c:forEach items="${_CATEGORY_LIST}" var="category">
 				<li>
 					<a href="/category/${category.id}/post/list"><c:out value="${category.name}" escapeXml="true" /></a>
@@ -55,19 +22,30 @@
 			
 			<li role="separator" class="divider"></li>
 			<li class="sidebar-brand">
-               <a href="/post/write">Write Post</a>
-            </li>
-            <li class="sidebar-brand">
-	           <c:if test="${_USER==null}">
-	               <a href="/user/login">Login</a>
-               </c:if>
-               <c:if test="${_USER!=null}">
+				Tags
+			</li>
+			<div id="tag-cloud" style="width: 230px; height: 300px; margin: 0, 10px; font-size: 50%"></div>
+			<li role="separator" class="divider"></li>
+			<li class="sidebar-brand">
+				<a href="/post/write">Write Post</a>
+			</li>
+			<li class="sidebar-brand">
+				<c:if test="${_USER==null}">
+					<a href="/user/login">Login</a>
+				</c:if>
+				<c:if test="${_USER!=null}">
 					<form action="/user/logout" method="post">
 						<button type="submit" class="btn">Disconnect</button>
 						<input type="hidden" name="_csrf" value="${_csrf.token}"></input>
 					</form>
 				</c:if>
-            </li>
-            
+			</li>
+			<li role="separator" class="divider"></li>
+			<li class="sidebar-brand">
+				<a href="/swagger-ui.html">APIs</a>
+			</li>
+			<li>
+				<a href="/swagger-ui.html#!/tag-api/tagCloudUsingGET">- tagCloudUsingGET</a>
+			</li>
 		</ul>
-    </nav>
+	</nav>
