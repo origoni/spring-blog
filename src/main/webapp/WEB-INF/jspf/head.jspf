@@ -112,6 +112,14 @@
 	color: #fff;
 }
 
+#menu-home {
+	z-index: 1;
+	position: fixed;
+	top: 5px;
+	right: 60px;
+	color: #fff;
+}
+
 #sidebar-wrapper.active {
 	right: 250px;
 	width: 250px;
