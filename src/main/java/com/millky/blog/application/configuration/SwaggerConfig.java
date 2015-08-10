@@ -29,7 +29,7 @@ public class SwaggerConfig {
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
 				.title("SpringBlog from Millky")
-				.description("Spring Boot base Open-source Blog - APIs")
+				.description("<a href=\"/post/list\">Spring Boot base Open-source Blog</a> - APIs")
 				.contact("origoni@live.com")
 				.version("1.0.0")
 				.build();
