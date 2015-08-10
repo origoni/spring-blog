@@ -1,4 +1,4 @@
-package com.millky.blog.presentation.controller.post;
+package com.millky.blog.presentation.controller.web.post;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,4 +1,4 @@
-package com.millky.blog.presentation.controller;
+package com.millky.blog.presentation.controller.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.millky.blog.presentation.controller;
+package com.millky.blog.presentation.controller.web;
 
 import java.util.Date;
 
