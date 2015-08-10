@@ -22,6 +22,7 @@ import com.millky.blog.domain.model.entity.Tag;
 import com.millky.blog.domain.repository.TagRepository;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -58,12 +59,12 @@ public class TagRestController {
 	}
 
 	@Data
-	// @ApiModel(value = "TagCloud")
+	@ApiModel(value = "TagCloud")
 	static class TagCloud {
 		TagCloud(Tag tag) {
 			text = tag.getName();
-			link = tag.getName();
 			weight = tag.getUseCount();
+			link = "/tag/" + tag.getName() + "/post/list";
 		}
 
 		@ApiModelProperty(value = "태그명")
@@ -72,6 +73,7 @@ public class TagRestController {
 		@ApiModelProperty(value = "태그의 사용 개수")
 		int weight;
 
+		@ApiModelProperty(value = "태그를 눌렀을때 이동할 링")
 		String link;
 	}
 }
