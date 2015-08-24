@@ -38,6 +38,10 @@
 	</div>
 </footer>
 
+<div>
+	<span class="backToTop" id="backToTop"><a href="#top">back to top</a></span>
+</div>
+
 <script src="/webjars/jquery/2.1.3/dist/jquery.min.js"></script>
 <script src="/webjars/bootstrap/3.3.5/dist/js/bootstrap.min.js"></script>
 <!-- <script src="/webjars/jQCloud/1.0.3/jqcloud/jqcloud-1.0.3.min.js"></script> -->
@@ -67,5 +71,22 @@
 		}
 		
 		$("#sidebar-wrapper").toggleClass("active");
+	});
+
+	// hide .backToTop first
+	$(".backToTop").hide();
+	$(window).scroll(function() {
+		if ($(this).scrollTop() > 100) {
+			$('.backToTop').fadeIn();
+		} else {
+			$('.backToTop').fadeOut();
+		}
+	});
+
+	$('.backToTop').click(function() {
+		$("html, body").animate({
+			scrollTop : 0
+		}, 300);
+		return false;
 	});
 </script>

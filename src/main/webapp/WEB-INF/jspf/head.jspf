@@ -135,4 +135,31 @@
 	right: 0px;
 	position: absolute;
 }
+
+
+/*	go to top
+================================================== */
+.backToTop {
+    position: fixed;
+    bottom: 10px;
+    z-index: 1000;
+    right: 10px;
+}
+
+.backToTop a {
+    opacity: .4;
+    width: 50px;
+    text-indent: -9999px;
+    height: 50px;
+    display: block;
+    margin: 0;
+    background: #53a3b7 url(/image/top.png) no-repeat center center;
+}
+
+.backToTop a:hover {
+    opacity: .8;
+}
+
+/*	go to top
+================================================== */
 </style>
