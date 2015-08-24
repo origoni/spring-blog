@@ -33,7 +33,7 @@
 				</div>
 
 				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<h3>
+				<h3 style="line-height: 1.6;">
 				<c:forEach var="postTag" items="${post.postTagList}" varStatus="status">
 					<a href="/tag/<c:out value="${postTag.tag.name}" escapeXml="true" />/post/list">
 						<span class="label label-default"><c:out value="${postTag.tag.name}" escapeXml="true" /></span></a>
