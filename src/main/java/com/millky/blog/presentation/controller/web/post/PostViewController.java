@@ -56,7 +56,7 @@ public class PostViewController {
 	public String list(Model model,
 			@PageableDefault(sort = { "id" }, direction = Direction.DESC, size = 10) Pageable pageable) {
 
-		model.addAttribute("postList", postRepository.getPostList(pageable, 0).getContent());
+		model.addAttribute("postList", postRepository.getPostList(pageable).getContent());
 
 		return "post/rss";
 	}
