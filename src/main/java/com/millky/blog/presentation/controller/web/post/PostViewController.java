@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.millky.blog.domain.model.entity.Post;
+import com.millky.blog.domain.repository.CategoryRepository;
 import com.millky.blog.domain.repository.PostRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,9 @@ public class PostViewController {
 
 	@Autowired
 	private PostRepository postRepository;
+
+	@Autowired
+	private CategoryRepository categoryRepository;
 
 	@RequestMapping("/post/{id}")
 	public String view(Model model, @PathVariable int id) {
@@ -41,8 +45,10 @@ public class PostViewController {
 
 		if (categoryId.isPresent()) {
 			postPage = postRepository.getPostList(pageable, categoryId.get());
+			model.addAttribute("category", categoryRepository.getCategory(categoryId.get()).getName());
 		} else if (tagName.isPresent()) {
 			postPage = postRepository.getPostList(pageable, tagName.get());
+			model.addAttribute("tag", tagName.get());
 		} else {
 			postPage = postRepository.getPostList(pageable);
 		}

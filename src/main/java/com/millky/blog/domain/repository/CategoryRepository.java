@@ -19,6 +19,14 @@ public class CategoryRepository {
 	@Autowired
 	private CategoryDao categoryDao;
 
+	public Category getCategory(int categoryId) {
+
+		Category category = categoryDao.findOne(categoryId);
+		log.debug("category = {}", category);
+
+		return category;
+	}
+
 	public List<Category> getCategoryList() {
 
 		List<Category> categoryList = categoryDao.findAll();

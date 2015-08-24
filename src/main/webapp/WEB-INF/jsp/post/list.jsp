@@ -26,6 +26,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<c:if test="${category!=null}">
+				<c:out value="${category}" escapeXml="true" /> 카테고리에 
+			</c:if>
+			<c:if test="${tag!=null}">
+				<c:out value="${tag}" escapeXml="true" /> 태그에 
+			</c:if>
+			<c:if test="${postPage.content.size()>0}">
+				${postPage.content.size()} 개의 글이 있습니다.
+			</c:if>
 			<c:if test="${postPage.content.size()==0}">
 				글이 없습니다.
 			</c:if>
