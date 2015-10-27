@@ -1,7 +1,8 @@
 spring:
-    view:
-        prefix: /WEB-INF/jsp/
-        suffix: .jsp
+    mvc:
+        view:
+            prefix: /WEB-INF/jsp/
+            suffix: .jsp
     social:
         facebook:
             appId: 487654301400466
@@ -9,11 +10,15 @@ spring:
     jpa:
         generate-ddl: true
         show-sql: true
+    h2:
+        console:
+            enabled: true
    
 logging:
     level:
         com.millky.blog: DEBUG
 
-error:
-    whitelabel:
-        enabled: false
+server:
+    error:
+        whitelabel:
+            enabled: false

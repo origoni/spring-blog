@@ -28,7 +28,7 @@
   .error {color: red;}
 </style>
 
-<link rel="stylesheet" href="/webjars/pen/0.1.0/src/pen.css" />
+<link rel="stylesheet" href="/webjars/pen/0.2.2/src/pen.css" />
 <link rel="stylesheet" href="/webjars/origoni-startbootstrap-clean-blog/1.0.3/css/clean-blog.min.css">
 
 <style type="text/css">
@@ -127,10 +127,10 @@
 	
 	<p class="text-muted" style="font-size: 14px;">Powered By <a href="http://millky.com">Millky</a> | WYSIWYG Editor by <a href="https://github.com/sofish/pen">Pen Editor</a></p>
 
-	<script src="/webjars/jquery/2.1.3/dist/jquery.min.js"></script>
+	<script src="/webjars/jquery/2.1.4/dist/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/3.3.5/dist/js/bootstrap.min.js"></script>
-	<script src="/webjars/pen/0.1.0/src/pen.js"></script>
-	<script src="/webjars/pen/0.1.0/src/markdown.js"></script>
+	<script src="/webjars/pen/0.2.2/src/pen.js"></script>
+	<script src="/webjars/pen/0.2.2/src/markdown.js"></script>
 	<script type="text/javascript">
 		$('#add_category').submit(function(event) {
 			var form = $(this);
