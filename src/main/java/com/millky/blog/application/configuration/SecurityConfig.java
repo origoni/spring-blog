@@ -12,6 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		// @formatter:off
 		http
 			.formLogin()
 				.loginPage("/user/login")
@@ -24,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 					.antMatchers("/**/write*", "/**/edit*", "/**/delete*").authenticated()
 					.antMatchers("/**").permitAll();
+		// @formatter:on
 	}
 
 	@Override
