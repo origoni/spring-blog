@@ -60,7 +60,7 @@ com.millky.blog
 
 #### Environment
 - Java version: 8 Update 66
-- Spring Boot version: 1.3.0.RC1
+- Spring Boot version: 1.3.1
 - Maven version: 3.3.3
 - Lombok version: 1.16.6
 - Default Encoding: UTF-8
