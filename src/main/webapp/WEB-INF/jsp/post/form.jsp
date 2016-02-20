@@ -70,10 +70,7 @@
 	  <i class="pen-icon icon-createlink" data-action="createlink"></i>
 	</div>
 
-	<c:if test="${postCommand.id == 0}"><c:url var="actionUrl" value="/post/write"/></c:if>
-	<c:if test="${postCommand.id != 0}"><c:url var="actionUrl" value="/post/${postCommand.id}/edit"/></c:if>
-
-	<form:form action="${actionUrl}" commandName="postCommand" id="post" onsubmit="if($('#pen').html()!='<p><br></p>')$('#content').val($('#pen').html()); pen.destroy();" method="post">
+	<form:form action="${requestScope['javax.servlet.forward.servlet_path']}" commandName="postCommand" id="post" onsubmit="if($('#pen').html()!='<p><br></p>')$('#content').val($('#pen').html()); pen.destroy();" method="post">
 
 		<form:input type="hidden" path="_csrf" value="${_csrf.token}"></form:input>
 	
