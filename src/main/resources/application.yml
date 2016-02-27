@@ -17,6 +17,13 @@ spring:
             enabled: true
     datasource:
         url: jdbc:h2:file:./spring-blog
+    jackson:
+        date-format: yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+        time-zone : Asia/Seoul
+#        deserialization:
+#            unwrap-root-value: true
+#        serialization:
+#            wrap-root-value: true
 
 logging:
     level:

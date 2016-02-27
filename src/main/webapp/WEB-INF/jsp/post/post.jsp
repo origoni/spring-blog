@@ -53,12 +53,85 @@
 				</a>
 			</div>
 			</c:if>
+			
+			<hr>
+			<div class="row">
+				<div id="target" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"></div>
+				<c:if test="${_USER!=null}">
+					<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+						<br>
+						<form action="/comments" method="post" id="comment_form">
+							<input type="hidden" name="postId" value="${post.id}">
+							<input type="hidden" name="_csrf" value="${_csrf.token}"></input>
+							<textarea name="content" class="form-control" rows="3"></textarea>
+							<button type="submit">저장</button>
+						</form>
+					</div>
+				</c:if>
+			</div>
 		</div>
 	</article>
 
 	<hr>
 
 	<%@ include file="/WEB-INF/jspf/footer.jspf" %>
+
+<script id="template" type="x-tmpl-mustache">
+{{#.}}
+<div class="media">
+  <div class="media-body">
+    {{content}}<br>
+    <h4 class="media-heading" style="display: inline-block;">{{name}}</h4> on {{regDate}}<br>
+  </div>
+</div>
+{{/.}}
+</script>
+
+<script type="text/javascript">
+
+	$("#comment_form").submit(function(event) {
+
+		var form = $(this);
+		$.ajax({
+			type : form.attr('method'),
+			url : form.attr('action'),
+			data : form.serialize(),
+			dataType : 'json',
+			success : function(data, status) {
+				// console.log(data);
+				loadComment();
+				form[0].reset();
+			},
+			error : function(data, status) {
+				alert(data.responseJSON.message);
+			}
+		});
+		event.preventDefault();
+	});
+
+	var template = $('#template').html();
+	Mustache.parse(template);
+	function loadComment() {
+		$.ajax({
+			type : "GET",
+			url : "/comments",
+			data : "postId=${post.id}",
+			dataType : 'json',
+			cache : false,
+			success : function(data, status) {
+				// console.log(data);
+				$('#target').html(Mustache.render(template, data));
+			},
+			error : function(data, status) {
+				alert("error");
+			}
+		}).always(function() {
+		});
+	}
+	
+	loadComment();
+</script>
+
 </body>
 </html>
 
