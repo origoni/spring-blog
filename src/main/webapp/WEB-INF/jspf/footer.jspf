@@ -44,8 +44,8 @@
 
 <script src="/webjars/jquery/2.1.4/dist/jquery.min.js"></script>
 <script src="/webjars/bootstrap/3.3.5/dist/js/bootstrap.min.js"></script>
-<!-- <script src="/webjars/jQCloud/1.0.3/jqcloud/jqcloud-1.0.3.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud-1.0.4.js"></script>
+<script src="/webjars/jqcloud2/2.0.1/dist/jqcloud.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud-1.0.4.js"></script> -->
 
 <script type="text/javascript">
 	// Closes the sidebar menu
