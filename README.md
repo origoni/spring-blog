@@ -9,6 +9,24 @@ SpringBoot + Spring Data JPA + Spring Social + ...
 
 단지 코드만 공개한는 것이 아니라. 개발 과정을 같이 공개하려 합니다.
 
+### 개발된 기능
+- 기본적인 블로그 뷰
+- 소셜 로그인(페이스북만)
+- 글쓰기, 수정, 삭제. 페이징
+- 댓글쓰기, 삭제
+- 카테고리
+- 태그
+- RSS 뷰
+ 
+#### 추가 예정
+- 간단한 검색(DB)
+- 추가적인 소셜 로그인 및 기본 로그인
+- 댓글 수정
+- 국제화(i18n 다국어 지원)
+- 기타 DB 지원
+- 간단한 캐싱 (EHCache ?)
+
+
 ### LIVE DEMO
 - http://blog.millky.com/post/list
 - 해당코드 수정없이 사용합니다.
@@ -18,6 +36,7 @@ SpringBoot + Spring Data JPA + Spring Social + ...
 ### Quick Start
 - JDK 1.8 or later
 - Maven 3.0+
+- Git
 
 ```
 git clone https://github.com/origoni/Spring-Blog
@@ -39,7 +58,7 @@ mvn spring-boot:run
 ```
 com.millky.blog
     └── application
-        └── aop(?)
+        └── aop
         └── configuration
         └── utility
     └── domain
@@ -54,14 +73,15 @@ com.millky.blog
     └── presentation
         └── controller
             └── rest
+            └── web
         └── support
             └── result
 ```
 
 #### Environment
-- Java version: 8 Update 66
-- Spring Boot version: 1.3.1
-- Maven version: 3.3.3
+- Java version: 8 Update 74
+- Spring Boot version: 1.3.3
+- Maven version: 3.3.9
 - Lombok version: 1.16.6
 - Default Encoding: UTF-8
 - Default SCM : git
