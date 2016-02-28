@@ -63,8 +63,14 @@
 						<form action="/comments" method="post" id="comment_form">
 							<input type="hidden" name="postId" value="${post.id}">
 							<input type="hidden" name="_csrf" value="${_csrf.token}"></input>
-							<textarea name="content" class="form-control" rows="3"></textarea>
-							<button type="submit">저장</button>
+							<div class="media">
+								<div class="media-body">
+									<textarea name="content" class="form-control" rows="2"></textarea>
+								</div>
+								<div class="media-right">
+									<button class="btn" type="submit">저장</button>
+								</div>
+							</div>
 						</form>
 					</div>
 				</c:if>
@@ -80,8 +86,10 @@
 {{#.}}
 <div class="media">
   <div class="media-body">
-    {{content}}<br>
-    <h4 class="media-heading" style="display: inline-block;">{{name}}</h4> on {{regDate}}<br>
+    <h4 class="media-heading" style="display: inline-block;">{{name}}</h4> on {{regDate}}
+	{{#myComment}}<button type="button" style="margin-bottom: 5px;" class="btn btn-danger btn-sm" onclick="if(!confirm('진심이에요?')){return false;} deleteComment({{postId}}, {{id}});">Delete</button>{{/myComment}}<br>
+	{{content}}
+    <br>
   </div>
 </div>
 {{/.}}
@@ -89,8 +97,24 @@
 
 <script type="text/javascript">
 
-	$("#comment_form").submit(function(event) {
+	function deleteComment(postId, commentId) {
+		$.ajax({
+			type : "delete",
+			url : "/comments/" + commentId + "?postId=" + postId,
+			dataType : 'json',
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', '${_csrf.token}');
+			},
+			success : function(data, status) {
+				loadComment();
+			},
+			error : function(data, status) {
+				alert("error");
+			}
+		});
+	}
 
+	$("#comment_form").submit(function(event) {
 		var form = $(this);
 		$.ajax({
 			type : form.attr('method'),
@@ -98,7 +122,6 @@
 			data : form.serialize(),
 			dataType : 'json',
 			success : function(data, status) {
-				// console.log(data);
 				loadComment();
 				form[0].reset();
 			},
@@ -119,6 +142,21 @@
 			dataType : 'json',
 			cache : false,
 			success : function(data, status) {
+				/* <c:if test="${_USER!=null && _USER.providerUserId == post.userId}"> */
+				for (k in data) {
+					object = data[k];
+					// console.log("object = " + object);
+					for (key in object) {
+						if (key == "userId") {
+							value = object[key];
+							// console.log("value = " + value);
+							if (value == "${_USER.providerUserId}") {
+								object['myComment'] = true;
+							}
+						}
+					}
+				}
+				/* </c:if> */
 				// console.log(data);
 				$('#target').html(Mustache.render(template, data));
 			},
@@ -128,7 +166,7 @@
 		}).always(function() {
 		});
 	}
-	
+
 	loadComment();
 </script>
 
