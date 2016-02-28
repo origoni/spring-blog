@@ -32,10 +32,10 @@
 			<c:if test="${tag!=null}">
 				<c:out value="${tag}" escapeXml="true" /> 태그에 
 			</c:if>
-			<c:if test="${postPage.content.size()>0}">
-				${postPage.content.size()} 개의 글이 있습니다.
+			<c:if test="${postPage.totalElements>0}">
+				총 ${postPage.totalElements} 개의 글이 있습니다.
 			</c:if>
-			<c:if test="${postPage.content.size()==0}">
+			<c:if test="${postPage.totalElements==0}">
 				글이 없습니다.
 			</c:if>
 			<c:forEach var="post" items="${postPage.content}">
