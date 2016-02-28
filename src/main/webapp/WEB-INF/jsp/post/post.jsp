@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="${pageContext.request.locale.language}">
 <head>
 <%@ include file="/WEB-INF/jspf/head.jspf" %>
 <title><c:out value="${post.title}" escapeXml="true" /> : Spring Blog</title>
@@ -86,9 +86,9 @@
 {{#.}}
 <div class="media">
   <div class="media-body">
-    <h4 class="media-heading" style="display: inline-block;">{{name}}</h4> on {{regDate}}
-	{{#myComment}}<button type="button" style="margin-bottom: 5px;" class="btn btn-danger btn-sm" onclick="if(!confirm('진심이에요?')){return false;} deleteComment({{postId}}, {{id}});">Delete</button>{{/myComment}}<br>
-	{{content}}
+	{{content}}<br>
+	<h4 class="media-heading" style="display: inline-block;">{{name}}</h4> on {{momentNow}} <small>({{momentDate}})</small>
+	{{#myComment}}<button type="button" style="margin-bottom: 5px;" class="btn btn-danger btn-sm" onclick="if(!confirm('진심이에요?')){return false;} deleteComment({{postId}}, {{id}});">Delete</button>{{/myComment}}
     <br>
   </div>
 </div>
@@ -109,7 +109,7 @@
 				loadComment();
 			},
 			error : function(data, status) {
-				alert("error");
+				alert(data.responseJSON.message);
 			}
 		});
 	}
@@ -131,7 +131,8 @@
 		});
 		event.preventDefault();
 	});
-
+	
+	moment.locale('${pageContext.request.locale.language}');
 	var template = $('#template').html();
 	Mustache.parse(template);
 	function loadComment() {
@@ -142,21 +143,26 @@
 			dataType : 'json',
 			cache : false,
 			success : function(data, status) {
-				/* <c:if test="${_USER!=null && _USER.providerUserId == post.userId}"> */
+				
 				for (k in data) {
 					object = data[k];
 					// console.log("object = " + object);
 					for (key in object) {
+						value = object[key];
+						if (key == "regDate") {
+							object['momentDate'] = moment(value).format("YYYY-MM-DD HH:mm:ss");
+							object['momentNow'] = moment(value).fromNow();
+						}
+						/* <c:if test="${_USER!=null && _USER.providerUserId == post.userId}"> */
 						if (key == "userId") {
-							value = object[key];
 							// console.log("value = " + value);
 							if (value == "${_USER.providerUserId}") {
 								object['myComment'] = true;
 							}
 						}
+						/* </c:if> */
 					}
 				}
-				/* </c:if> */
 				// console.log(data);
 				$('#target').html(Mustache.render(template, data));
 			},

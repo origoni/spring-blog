@@ -106,6 +106,11 @@
 			<artifactId>jqcloud2</artifactId>
 			<version>2.0.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>momentjs</artifactId>
+			<version>2.11.2</version>
+		</dependency>
 
 		<!-- 지금까지 회사에서는 handlebars 를 사용하고 있었지만 여러 플랫폼을 지원해서 사용해보려 함 -->
 		<dependency>

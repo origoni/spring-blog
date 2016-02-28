@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.millky.blog.domain.model.UserSession;
 import com.millky.blog.domain.model.entity.Comment;
+import com.millky.blog.domain.model.exception.IllegalUserException;
 import com.millky.blog.infrastructure.dao.CommentDao;
 
 @RestController
@@ -47,6 +48,13 @@ public class CommentRestController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@RequestParam(value = "postId", required = true) int postId, @PathVariable int id,
 			UserSession user) {
-		commentDao.delete(id);
+		
+		// 확인해야 할 것이 많지만.. 최소 같은작성자인지는 확인하자.
+		Comment comment = commentDao.findOne(id);
+		if (comment.getUserId().equals(user.getProviderUserId())) {
+			commentDao.delete(id);
+		} else {
+			throw new IllegalUserException("Not the Writer.");
+		}
 	}
 }
