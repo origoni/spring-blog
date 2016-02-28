@@ -24,7 +24,7 @@ public class CommentRestController {
 	CommentDao commentDao;
 
 	@RequestMapping(value = "/comments", method = RequestMethod.GET)
-	public List<Comment> save(@RequestParam(value = "postId", required = true) int postId) {
+	public List<Comment> list(@RequestParam(value = "postId", required = true) int postId) {
 		return commentDao.findByPostId(postId);
 	}
 
