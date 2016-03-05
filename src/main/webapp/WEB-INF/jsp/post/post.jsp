@@ -153,7 +153,7 @@
 							object['momentDate'] = moment(value).format("YYYY-MM-DD HH:mm:ss");
 							object['momentNow'] = moment(value).fromNow();
 						}
-						/* <c:if test="${_USER!=null && _USER.providerUserId == post.userId}"> */
+						/* <c:if test="${_USER!=null}"> */
 						if (key == "userId") {
 							// console.log("value = " + value);
 							if (value == "${_USER.providerUserId}") {
