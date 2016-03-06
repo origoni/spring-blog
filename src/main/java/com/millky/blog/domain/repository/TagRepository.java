@@ -35,12 +35,9 @@ public class TagRepository {
 	}
 
 	public void decreaseUseCount(int tagIdx) {
-
 		Tag tag = tagDao.findOne(tagIdx);
-		if (tag != null) {
-			tag.setUpdateDate(new Date());
-			tag.setUseCount(tag.getUseCount() - 1);
-		}
+		tag.setUpdateDate(new Date());
+		tag.setUseCount(tag.getUseCount() - 1);
 	}
 
 	public Page<Tag> findAll(Pageable pageable) {

@@ -101,7 +101,7 @@ public class TagService {
 
 	private void deleteTag(List<PostTag> postTagList) {
 		for (PostTag postTag : postTagList) {
-			this.postTagRepository.deletePostTag(postTag.getId());
+			this.postTagRepository.deletePostTag(postTag);
 		}
 	}
 }

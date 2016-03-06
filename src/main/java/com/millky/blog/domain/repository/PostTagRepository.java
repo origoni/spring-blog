@@ -29,9 +29,9 @@ public class PostTagRepository {
 		return postTagDao.findByPostId(postId);
 	}
 
-	public void deletePostTag(int postTagIdx) {
-		postTagDao.delete(postTagIdx);
+	public void deletePostTag(PostTag postTag) {
+		postTagDao.delete(postTag.getId());
 
-		tagRepository.decreaseUseCount(postTagIdx);
+		tagRepository.decreaseUseCount(postTag.getTagId());
 	}
 }
