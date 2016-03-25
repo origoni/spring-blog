@@ -134,7 +134,7 @@
 
 	var autolinker = new Autolinker( {
 		newWindow : false,
-		truncate  : 30
+		truncate  : 70
 	} );
 
 	moment.locale('${pageContext.request.locale.language}');
