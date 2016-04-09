@@ -9,6 +9,11 @@ SpringBoot + Spring Data JPA + Spring Social + ...
 
 단지 코드만 공개한는 것이 아니라. 개발 과정을 같이 공개하려 합니다.
 
+### LIVE DEMO
+- http://blog.millky.com/post/list
+- 제공하는 API를 확인해 보세요~ http://blog.millky.com/swagger-ui.html#!/tag-api/tagCloudUsingGET
+
+
 ### 개발된 기능
 - 기본적인 블로그 뷰
 - 소셜 로그인(페이스북만)
@@ -17,21 +22,15 @@ SpringBoot + Spring Data JPA + Spring Social + ...
 - 카테고리
 - 태그
 - RSS 뷰
+- 간단한 검색(DB)
  
 #### 추가 예정
-- 간단한 검색(DB)
 - 추가적인 소셜 로그인 및 기본 로그인
 - 댓글 수정
 - 국제화(i18n 다국어 지원)
 - 기타 DB 지원
 - 간단한 캐싱 (EHCache ?)
 
-
-### LIVE DEMO
-- http://blog.millky.com/post/list
-- 해당코드 수정없이 사용합니다.
-- 어떠한 정보도 기록하지 않습니다.
-- 제공하는 API를 확인해 보세요~ http://blog.millky.com/swagger-ui.html#!/tag-api/tagCloudUsingGET
 
 ### Quick Start
 - JDK 1.8 or later

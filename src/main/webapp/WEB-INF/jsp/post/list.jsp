@@ -26,6 +26,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<c:if test="${query!=null}">
+				<c:out value="${query}" escapeXml="true" /> (으)로 검색된 
+			</c:if>
 			<c:if test="${category!=null}">
 				<c:out value="${category}" escapeXml="true" /> 카테고리에 
 			</c:if>
@@ -56,15 +59,44 @@
 				<ul class="pager">
 					<c:if test="${!postPage.first}">
 					<li class="previous">
-						<a href="?page=${postPage.number-1}">&larr; Newer Posts</a>
+						<c:if test="${query==null}">
+							<a href="?page=${postPage.number-1}">&larr; Newer Posts</a>
+						</c:if>
+						<c:if test="${query!=null}">
+							<a href="?type=${param.type}&query=${param.query}&page=${postPage.number-1}">&larr; Newer Posts</a>
+						</c:if>
 					</li>
 					</c:if>
 					<c:if test="${!postPage.last}">
 					<li class="next">
-						<a href="?page=${postPage.number+1}">Older Posts &rarr;</a>
+						<c:if test="${query==null}">
+							<a href="?page=${postPage.number+1}">Older Posts &rarr;</a>
+						</c:if>
+						<c:if test="${query!=null}">
+							<a href="?type=${param.type}&query=${param.query}&page=${postPage.number+1}">Older Posts &rarr;</a>
+						</c:if>
 					</li>
 					</c:if>
 				</ul>
+				
+				<br />
+				
+				<form action="/post/search" method="get" class="form-inline">
+					<select class="form-control input-lg" name="type">
+						<option <c:if test="${type=='title'}">selected="selected" </c:if>value="title">Title</option>
+						<option <c:if test="${type=='contents'}">selected="selected" </c:if>value="contents">Contents</option>
+						<option <c:if test="${type=='titleAndContents'}">selected="selected" </c:if>value="titleAndContents">Title And Contents</option>
+					</select>
+					<div class="input-group">
+						<input type="text" name="query" class="form-control input-lg" placeholder="Search..." value="${query}">
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-default input-lg" style="border-radius: 0 4px 4px 0; padding: 10px 20px;">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
+				</form>
+				
 			</div>
 		</div>
 	</div>
