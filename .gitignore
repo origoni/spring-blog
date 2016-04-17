@@ -1,3 +1,7 @@
+.mvn/
+mvnw
+mvnw.cmd
+
 *.sw?
 .#*
 *#
