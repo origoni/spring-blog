@@ -33,8 +33,9 @@ SpringBoot + Spring Data JPA + Spring Social + ...
 
 
 ### Quick Start
-- JDK 1.8 or later
-- Maven 3.0+
+- JDK 1.8
+- SpringBoot 1.5.8
+- Maven 3.5
 - Git
 
 ```
