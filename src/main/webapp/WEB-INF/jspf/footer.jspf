@@ -42,13 +42,13 @@
 	<span class="backToTop" id="backToTop"><a href="#top">back to top</a></span>
 </div>
 
-<script src="/webjars/jquery/2.1.4/dist/jquery.min.js"></script>
-<script src="/webjars/bootstrap/3.3.5/dist/js/bootstrap.min.js"></script>
-<script src="/webjars/jqcloud2/2.0.1/dist/jqcloud.min.js"></script>
-<script src="/webjars/mustache/2.2.1/mustache.min.js"></script>
-<script src="/webjars/momentjs/2.11.2/moment.js"></script>
-<script src="/webjars/momentjs/2.11.2/locale/${pageContext.request.locale.language}.js"></script>
-<script src="/webjars/Autolinker.js/0.25.0/dist/Autolinker.min.js"></script>
+<script src="/webjars/jquery/dist/jquery.min.js"></script>
+<script src="/webjars/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/webjars/jqcloud2/dist/jqcloud.min.js"></script>
+<script src="/webjars/mustache/mustache.min.js"></script>
+<script src="/webjars/momentjs/moment.js"></script>
+<script src="/webjars/momentjs/locale/${pageContext.request.locale.language}.js"></script>
+<script src="/webjars/github-com-gregjacobs-Autolinker-js/dist/Autolinker.min.js"></script>
 
 <script type="text/javascript">
 	// Closes the sidebar menu

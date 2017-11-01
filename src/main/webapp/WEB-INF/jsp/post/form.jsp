@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Pen - What You See Is What You Get (WYSIWYG)</title>
-<link rel="stylesheet" href="/webjars/bootstrap/3.3.5/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/webjars/bootstrap/dist/css/bootstrap.min.css">
 <style type="text/css">
   *{padding:0;margin:0;}
   html{border-top:10px #1abf89 solid;}
@@ -28,8 +28,8 @@
   .error {color: red;}
 </style>
 
-<link rel="stylesheet" href="/webjars/pen/0.2.2/src/pen.css" />
-<link rel="stylesheet" href="/webjars/origoni-startbootstrap-clean-blog/1.0.3/css/clean-blog.min.css">
+<link rel="stylesheet" href="/webjars/github-com-sofish-pen/src/pen.css" />
+<link rel="stylesheet" href="/webjars/origoni-startbootstrap-clean-blog/css/clean-blog.min.css">
 
 <style type="text/css">
 .pen-icon {padding: 0 9.3px;}
@@ -124,10 +124,10 @@
 	
 	<p class="text-muted" style="font-size: 14px;">Powered By <a href="http://millky.com">Millky</a> | WYSIWYG Editor by <a href="https://github.com/sofish/pen">Pen Editor</a></p>
 
-	<script src="/webjars/jquery/2.1.4/dist/jquery.min.js"></script>
-	<script src="/webjars/bootstrap/3.3.5/dist/js/bootstrap.min.js"></script>
-	<script src="/webjars/pen/0.2.2/src/pen.js"></script>
-	<script src="/webjars/pen/0.2.2/src/markdown.js"></script>
+	<script src="/webjars/jquery/dist/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/webjars/github-com-sofish-pen/src/pen.js"></script>
+	<script src="/webjars/github-com-sofish-pen/src/markdown.js"></script>
 	<script type="text/javascript">
 		$('#add_category').submit(function(event) {
 			var form = $(this);
