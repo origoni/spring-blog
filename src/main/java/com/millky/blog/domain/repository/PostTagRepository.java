@@ -30,7 +30,7 @@ public class PostTagRepository {
 	}
 
 	public void deletePostTag(PostTag postTag) {
-		postTagDao.delete(postTag.getId());
+		postTagDao.deleteById(postTag.getId());
 
 		tagRepository.decreaseUseCount(postTag.getTagId());
 	}

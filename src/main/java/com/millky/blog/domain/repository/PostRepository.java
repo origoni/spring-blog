@@ -38,7 +38,7 @@ public class PostRepository {
 	}
 
 	public Post getPostById(int id) throws IllegalArgumentException {
-		Post post = postDao.findOne(id);
+		Post post = postDao.getOne(id);
 
 		if (post == null) {
 			throw new IllegalArgumentException("Post Not Found.");
@@ -56,7 +56,7 @@ public class PostRepository {
 
 	public void deletePost(int id) throws IllegalUserException, IllegalArgumentException {
 
-		postDao.delete(id);
+		postDao.deleteById(id);
 	}
 
 	public Post editPost(PostCommand postCommand) {

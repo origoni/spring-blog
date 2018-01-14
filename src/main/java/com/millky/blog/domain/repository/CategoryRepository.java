@@ -21,7 +21,7 @@ public class CategoryRepository {
 
 	public Category getCategory(int categoryId) {
 
-		Category category = categoryDao.findOne(categoryId);
+		Category category = categoryDao.getOne(categoryId);
 		log.debug("category = {}", category);
 
 		return category;

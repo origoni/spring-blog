@@ -28,7 +28,7 @@
   .error {color: red;}
 </style>
 
-<link rel="stylesheet" href="/webjars/github-com-sofish-pen/src/pen.css" />
+<link rel="stylesheet" href="/webjars/pen/pen.css" />
 <link rel="stylesheet" href="/webjars/origoni-startbootstrap-clean-blog/css/clean-blog.min.css">
 
 <style type="text/css">
@@ -70,7 +70,8 @@
 	  <i class="pen-icon icon-createlink" data-action="createlink"></i>
 	</div>
 
-	<form:form action="${requestScope['javax.servlet.forward.servlet_path']}" commandName="postCommand" id="post" onsubmit="if($('#pen').html()!='<p><br></p>')$('#content').val($('#pen').html()); pen.destroy();" method="post">
+	<form:form action="${requestScope['javax.servlet.forward.servlet_path']}" id="post" modelAttribute="postCommand" onsubmit="if($('#pen').html()!='<p><br></p>')$('#content').val($('#pen').html()); pen.destroy();" method="post">
+	<%--<form:form action="${requestScope['javax.servlet.forward.servlet_path']}" commandName="postCommand" id="post" onsubmit="if($('#pen').html()!='<p><br></p>')$('#content').val($('#pen').html()); pen.destroy();" method="post">--%>
 
 		<form:input type="hidden" path="_csrf" value="${_csrf.token}"></form:input>
 	
@@ -126,8 +127,8 @@
 
 	<script src="/webjars/jquery/dist/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="/webjars/github-com-sofish-pen/src/pen.js"></script>
-	<script src="/webjars/github-com-sofish-pen/src/markdown.js"></script>
+	<script src="/webjars/pen/pen.js"></script>
+	<script src="/webjars/pen/markdown.js"></script>
 	<script type="text/javascript">
 		$('#add_category').submit(function(event) {
 			var form = $(this);

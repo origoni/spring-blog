@@ -50,9 +50,9 @@ public class CommentRestController {
 			UserSession user) {
 		
 		// 확인해야 할 것이 많지만.. 최소 같은작성자인지는 확인하자.
-		Comment comment = commentDao.findOne(id);
+		Comment comment = commentDao.getOne(id);
 		if (comment.getUserId().equals(user.getProviderUserId())) {
-			commentDao.delete(id);
+			commentDao.deleteById(id);
 		} else {
 			throw new IllegalUserException("Not the Writer.");
 		}

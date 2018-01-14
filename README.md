@@ -34,7 +34,7 @@ SpringBoot + Spring Data JPA + Spring Social + ...
 
 ### Quick Start
 - JDK 1.8
-- SpringBoot 1.5.8
+- SpringBoot 2.0.0.m2
 - Maven 3.5
 - Git
 
@@ -79,10 +79,10 @@ com.millky.blog
 ```
 
 #### Environment
-- Java version: 8 Update 74
-- Spring Boot version: 1.3.3
-- Maven version: 3.3.9
-- Lombok version: 1.16.6
+- Java version: 8 Update 152
+- Spring Boot version: 2.0.0
+- Maven version: 3.5.2
+- Lombok version: 1.16.18
 - Default Encoding: UTF-8
 - Default SCM : git
 
