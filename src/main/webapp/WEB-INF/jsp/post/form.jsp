@@ -28,8 +28,8 @@
   .error {color: red;}
 </style>
 
-<link rel="stylesheet" href="/webjars/pen/pen.css" />
-<link rel="stylesheet" href="/webjars/origoni-startbootstrap-clean-blog/css/clean-blog.min.css">
+<link rel="stylesheet" href="/webjars/pen/src/pen.css" />
+<link rel="stylesheet" href="/webjars/origoni-startbootstrap-clean-blog/css/clean-blog.min.css" />
 
 <style type="text/css">
 .pen-icon {padding: 0 9.3px;}
@@ -127,8 +127,8 @@
 
 	<script src="/webjars/jquery/dist/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="/webjars/pen/pen.js"></script>
-	<script src="/webjars/pen/markdown.js"></script>
+	<script src="/webjars/pen/src/pen.js"></script>
+	<script src="/webjars/pen/src/markdown.js"></script>
 	<script type="text/javascript">
 		$('#add_category').submit(function(event) {
 			var form = $(this);

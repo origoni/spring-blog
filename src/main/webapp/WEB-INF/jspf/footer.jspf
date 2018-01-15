@@ -48,7 +48,7 @@
 <script src="/webjars/mustache/mustache.min.js"></script>
 <script src="/webjars/momentjs/moment.js"></script>
 <script src="/webjars/momentjs/locale/${pageContext.request.locale.language}.js"></script>
-<script src="/webjars/github-com-gregjacobs-Autolinker-js/dist/Autolinker.min.js"></script>
+<script src="/webjars/Autolinker.js/dist/Autolinker.min.js"></script>
 
 <script type="text/javascript">
 	// Closes the sidebar menu

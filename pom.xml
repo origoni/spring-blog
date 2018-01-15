@@ -36,10 +36,6 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
-		<!-- <dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency> -->
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
@@ -104,7 +100,9 @@
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>pen</artifactId>
-			<version>0.2.3</version>
+			<!--<artifactId>github-com-sofish-pen</artifactId>-->
+			<version>0.2.2</version>
+			<!--<version>0.2.3</version>-->
 		</dependency>
 
 
@@ -120,9 +118,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
-			<artifactId>github-com-gregjacobs-Autolinker-js</artifactId>
-			<version>1.4.4</version>
-            <!--<version>1.6.0</version>-->
+			<artifactId>Autolinker.js</artifactId>
+            <version>1.6.0</version>
 		</dependency>
 
 
@@ -142,7 +139,6 @@
 		<!--<version>1.70.0</version>-->
 		<!--</dependency>-->
 
-		<!-- https://github.com/springfox/springfox/issues/1126 -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
@@ -221,6 +217,5 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
 
 </project>
