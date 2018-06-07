@@ -14,7 +14,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.8.RELEASE</version>
+        <!--<version>2.0.0.M6</version>-->
+		<version>2.0.2.RELEASE</version>
 		<relativePath />
 	</parent>
 
@@ -34,19 +35,25 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
-		<!-- <dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency> -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
-		</dependency> -->
-
-		<dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-facebook</artifactId>
 		</dependency>
+
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.social</groupId>-->
+			<!--<artifactId>spring-social-facebook</artifactId>-->
+            <!--<version>3.0.0.M3</version>-->
+		<!--</dependency>-->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-jose</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -71,7 +78,7 @@
 
 		<dependency>
 			<groupId>org.webjars</groupId>
-			<artifactId>webjars-locator</artifactId>
+			<artifactId>webjars-locator-core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
@@ -100,25 +107,27 @@
 		</dependency>
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
-			<artifactId>github-com-sofish-pen</artifactId>
-			<version>0.2.3</version>
+			<artifactId>pen</artifactId>
+			<!--<artifactId>github-com-sofish-pen</artifactId>-->
+			<version>0.2.2</version>
+			<!--<version>0.2.3</version>-->
 		</dependency>
 
 
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>jqcloud2</artifactId>
-			<version>2.0.1</version>
+			<version>2.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>momentjs</artifactId>
-			<version>2.19.1</version>
+			<version>2.20.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
-			<artifactId>github-com-gregjacobs-Autolinker-js</artifactId>
-			<version>1.4.4</version>
+			<artifactId>Autolinker.js</artifactId>
+            <version>1.6.0</version>
 		</dependency>
 
 
@@ -135,19 +144,18 @@
 		<!--<dependency>-->
 		<!--<groupId>net.bull.javamelody</groupId>-->
 		<!--<artifactId>javamelody-spring-boot-starter</artifactId>-->
-		<!--<version>1.69.0</version>-->
+		<!--<version>1.70.0</version>-->
 		<!--</dependency>-->
 
-		<!-- https://github.com/springfox/springfox/issues/1126 -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
-			<version>2.2.2</version>
+			<version>2.7.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.2.2</version>
+			<version>2.7.0</version>
 		</dependency>
 
 		<dependency>
@@ -179,5 +187,43 @@
 		</plugins>
 		<finalName>${project.artifactId}-${project.version}</finalName>
 	</build>
+
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>

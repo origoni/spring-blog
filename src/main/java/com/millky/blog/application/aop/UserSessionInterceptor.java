@@ -1,40 +1,33 @@
 package com.millky.blog.application.aop;
 
+import com.millky.blog.domain.model.UserSession;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.social.connect.Connection;
-import org.springframework.social.connect.ConnectionData;
-import org.springframework.social.connect.ConnectionRepository;
-import org.springframework.social.facebook.api.Facebook;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-import com.millky.blog.domain.model.UserSession;
-
+@Slf4j
 public class UserSessionInterceptor extends HandlerInterceptorAdapter {
 
-	private ConnectionRepository connectionRepository;
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-	public UserSessionInterceptor(ConnectionRepository connectionRepository) {
-		this.connectionRepository = connectionRepository;
-	}
+        try {
+            SecurityContext context = SecurityContextHolder.getContext();
+            Authentication authentication = context.getAuthentication();
+            String currentPrincipalName = authentication.getName();
+            if (!currentPrincipalName.equals("anonymousUser")) {
+                DefaultOAuth2User userDetails = (DefaultOAuth2User) authentication.getPrincipal();
+                request.setAttribute("_USER", new UserSession(currentPrincipalName, "", (String) userDetails.getAttributes().get("name")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
-		Connection<Facebook> connection;
-
-		try {
-			connection = connectionRepository.findPrimaryConnection(Facebook.class);
-		} catch (Exception e) {
-			connection = null;
-		}
-
-		if (connection != null) {
-			ConnectionData data = connection.createData();
-
-			request.setAttribute("_USER", new UserSession(data.getProviderUserId(), data.getImageUrl(), data.getDisplayName()));
-		}
-
-		return true;
-	}
+        return true;
+    }
 }

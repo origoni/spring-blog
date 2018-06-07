@@ -14,13 +14,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// @formatter:off
 		http
-			.formLogin()
+			.oauth2Login()
 				.loginPage("/user/login")
 			.and()
 				.logout()
 					.logoutUrl("/user/logout")
-					.deleteCookies("JSESSIONID")
-					.logoutSuccessUrl("/post/list")
+					.logoutSuccessUrl("/")
 			.and()
 				.authorizeRequests()
 					.antMatchers("/**/write*", "/**/edit*", "/**/delete*").authenticated()
