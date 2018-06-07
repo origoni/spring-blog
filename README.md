@@ -1,5 +1,5 @@
 # SpringBlog from Millky
-### Spring Boot base Open-source Blog
+### SpringBoot 2 base Open-source Blog
 
 밀키(millky.com)에서 블로그 부분을 뽑아(?) 오픈소스 합니다.
 
@@ -16,7 +16,7 @@ SpringBoot2 + Spring Data JPA + Spring Security + ...
 
 ### 개발된 기능
 - 기본적인 블로그 뷰
-- 페이스북, 구글 소셜 로그인(다른곳도 같단하게 추가 가능)
+- 페이스북, 구글 소셜 로그인(깃헙등도 간단하게 추가 가능)
 - 글쓰기, 수정, 삭제. 페이징
 - 댓글쓰기, 삭제
 - 카테고리
@@ -33,6 +33,7 @@ SpringBoot2 + Spring Data JPA + Spring Security + ...
 
 
 ### Quick Start
+설치되어 있어야 할 것
 - JDK 1.8 (or Java 10)
 - Maven 3.5
 - Git
