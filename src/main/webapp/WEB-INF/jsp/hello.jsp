@@ -12,7 +12,7 @@
 	<div class="container" id="body_test">
 		<h2>Hello! ${name}</h2>
 		<div>JSP version</div>
-		<div><fmt:message key="required"/></div>
+
 		<a href="/post/list">
 			<button type="button" class="btn btn-lg btn-success btn-block">
 			<c:if test="${_USER!=null}">환영합니다! ${_USER.displayName}<br><br></c:if>
@@ -61,13 +61,15 @@
 			<ol>
 				<li>STS 설치 -&gt; <a href="http://millky.com/@origoni/post/1100">http://millky.com/@origoni/post/1100</a></li>
 				<li>Lombok 설치 -&gt; <a href="https://projectlombok.org/">https://projectlombok.org/</a>
-					(설치 : <a href="http://millky.com/@origoni/post/1164">http://millky.com/@origoni/post/1164</a>)
+					(STS에 설치 : <a href="http://millky.com/@origoni/post/1164">http://millky.com/@origoni/post/1164</a>)
 				</li>
 				<li>GitHub 에서 다운 -&gt; <a href="http://millky.com/@origoni/post/1145">http://millky.com/@origoni/post/1145</a>
 					(OSX : <a href="http://millky.com/@origoni/post/1140">http://millky.com/@origoni/post/1140</a>)
 				</li>
 			</ol>
 		</article>
+
+        <div>fmt:message Test : <fmt:message key="required"/></div>
 	</div>
 
 	<%@ include file="/WEB-INF/jspf/footer.jspf"%>

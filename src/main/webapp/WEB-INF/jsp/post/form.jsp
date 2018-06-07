@@ -52,7 +52,7 @@
 <body>
 
 	<div id="custom-toolbar" class="pen-menu pen-menu" style="display: block; top: 20px; margin:0 auto;">
-	  <i class="pen-icon icon-insertimage" data-action="insertimage"></i>
+	  <%--<i class="pen-icon icon-insertimage" data-action="insertimage"></i>--%>
 	  <i class="pen-icon icon-blockquote" data-action="blockquote"></i>
 	  <i class="pen-icon icon-h1" data-action="h1"></i>
 	  <i class="pen-icon icon-h2" data-action="h2"></i>
