@@ -5,8 +5,8 @@
 
     <groupId>com.millky.blog</groupId>
     <artifactId>spring-blog</artifactId>
-    <version>0.0.22-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <version>0.0.23-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <name>SpringBlog</name>
     <description>SpringBlog project from Millky</description>
@@ -62,8 +62,15 @@
             <artifactId>jstl</artifactId>
         </dependency>
         <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-jersey</artifactId>
+        <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>compile</scope>
+
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -185,7 +192,8 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>${project.artifactId}-${project.version}</finalName>
+        <finalName>${project.artifactId}</finalName>
+<!--        <finalName>${project.artifactId}-${project.version}</finalName>-->
     </build>
 
     <repositories>
