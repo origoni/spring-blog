@@ -3,11 +3,12 @@ package com.millky.blog.application.aop;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
+//import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.millky.blog.infrastructure.dao.CategoryDao;
 
-public class CategoryInterceptor extends HandlerInterceptorAdapter {
+public class CategoryInterceptor implements HandlerInterceptor {//extends HandlerInterceptorAdapter {
 
 	private CategoryDao categoryDao;
 
