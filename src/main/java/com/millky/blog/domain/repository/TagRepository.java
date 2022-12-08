@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 import com.millky.blog.domain.model.entity.Tag;
 import com.millky.blog.infrastructure.dao.TagDao;
 
+import javax.persistence.EntityNotFoundException;
+
 @Repository
 public class TagRepository {
 
@@ -29,13 +31,17 @@ public class TagRepository {
 
 	public void increaseUseCount(int tagIdx) {
 
-		Tag tag = tagDao.getOne(tagIdx);
+		Tag tag = tagDao.findById(tagIdx)
+				.orElseThrow(() -> new EntityNotFoundException("ERROR Tag Not Found tagIdx=" + tagIdx));
+
 		tag.setUpdateDate(new Date());
 		tag.setUseCount(tag.getUseCount() + 1);
 	}
 
 	public void decreaseUseCount(int tagIdx) {
-		Tag tag = tagDao.getOne(tagIdx);
+		Tag tag = tagDao.findById(tagIdx)
+				.orElseThrow(() -> new EntityNotFoundException("ERROR Tag Not Found tagIdx=" + tagIdx));
+
 		tag.setUpdateDate(new Date());
 		tag.setUseCount(tag.getUseCount() - 1);
 	}

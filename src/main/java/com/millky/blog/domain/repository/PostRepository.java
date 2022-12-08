@@ -15,6 +15,8 @@ import com.millky.blog.infrastructure.dao.PostDao;
 
 import lombok.extern.slf4j.Slf4j;
 
+import javax.persistence.EntityNotFoundException;
+
 @Slf4j
 @Repository
 public class PostRepository {
@@ -38,11 +40,14 @@ public class PostRepository {
 	}
 
 	public Post getPostById(int id) throws IllegalArgumentException {
-		Post post = postDao.getOne(id);
+		Post post = postDao.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("ERROR Post Not Found ID=" + id));
 
-		if (post == null) {
-			throw new IllegalArgumentException("Post Not Found.");
-		}
+//				.orElse(null);
+//
+//		if (post == null) {
+//			throw new IllegalArgumentException("Post Not Found.");
+//		}
 
 		return post;
 	}

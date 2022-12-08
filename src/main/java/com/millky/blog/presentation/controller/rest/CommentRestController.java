@@ -17,6 +17,8 @@ import com.millky.blog.domain.model.entity.Comment;
 import com.millky.blog.domain.model.exception.IllegalUserException;
 import com.millky.blog.infrastructure.dao.CommentDao;
 
+import javax.persistence.EntityNotFoundException;
+
 @RestController
 public class CommentRestController {
 
@@ -48,9 +50,10 @@ public class CommentRestController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@RequestParam(value = "postId", required = true) int postId, @PathVariable int id,
 			UserSession user) {
-		
+
 		// 확인해야 할 것이 많지만.. 최소 같은작성자인지는 확인하자.
-		Comment comment = commentDao.getOne(id);
+		Comment comment = commentDao.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("ERROR Comment Not Found ID=" + id));
 		if (comment.getUserId().equals(user.getProviderUserId())) {
 			commentDao.deleteById(id);
 		} else {
