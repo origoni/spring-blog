@@ -13,6 +13,17 @@ spring:
             enabled: true
     datasource:
         url: jdbc:h2:file:./spring-blog
+
+    security:
+        oauth2:
+            client:
+                registration:
+                    facebook:
+                        client-id: 487654301400466
+                        client-secret: 3ec76bf19fbfeaf187a6673d1cf16411
+#            appId: 487654301400466
+#            appSecret: 3ec76bf19fbfeaf187a6673d1cf16411
+
     jackson:
         date-format: yyyy-MM-dd'T'HH:mm:ss.SSSXXX
         time-zone : Asia/Seoul
@@ -22,12 +33,14 @@ spring:
 #            wrap-root-value: true
 
 # https://developers.facebook.com/apps -> 새 앱 추가 -> Facebook 로그인
-spring.security.oauth2.client.registration.facebook.client-id: 487654301400466
-spring.security.oauth2.client.registration.facebook.client-secret: 3ec76bf19fbfeaf187a6673d1cf16411
+#spring.security.oauth2.client.registration.facebook.client-id: 487654301400466
+#spring.security.oauth2.client.registration.facebook.client-secret: 3ec76bf19fbfeaf187a6673d1cf16411
 
 # https://console.developers.google.com/ -> 사용자 인증 정보 -> 사용자 인증 정보 만들기 -> OAuth 클라이언트 ID
 spring.security.oauth2.client.registration.google.client-id: 564319405493-ldgbknrojsjh4m3lm187df00n5rt24bs.apps.googleusercontent.com
 spring.security.oauth2.client.registration.google.client-secret: 6PnvyM2DObCTtL1CKvj_VTwq
+
+server.tomcat.additional-tld-skip-patterns: asm.jar,class-model.jar,hk2-runlevel.jar,hk2-utils.jar,jakarta.annotation-api.jar,jakarta.inject.jar,hk2-api.jar,hk2-core.jar,hk2-locator.jar,javassist.jar
 
 
 logging:
@@ -38,3 +51,12 @@ server:
     error:
         whitelabel:
             enabled: false
+
+
+---
+
+spring:
+    profiles: prod
+logging:
+    level:
+        com.millky.blog: INFO
