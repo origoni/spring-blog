@@ -15,7 +15,7 @@ import com.millky.blog.infrastructure.dao.PostDao;
 
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 
 @Slf4j
 @Repository

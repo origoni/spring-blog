@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.millky.blog.domain.model.entity.Tag;
 import com.millky.blog.infrastructure.dao.TagDao;
 
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 
 @Repository
 public class TagRepository {

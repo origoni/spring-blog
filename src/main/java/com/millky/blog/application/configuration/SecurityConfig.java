@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 //import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 //@Configuration
 @EnableWebSecurity
@@ -27,8 +28,13 @@ public class SecurityConfig { // } extends WebSecurityConfigurerAdapter {
                         .logoutSuccessUrl("/")
                 .and()
                     .authorizeRequests()
-                        .antMatchers("/**/write*", "/**/edit*", "/**/delete*").authenticated()
-                        .antMatchers("/**").permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/**/write*")).authenticated()
+                .requestMatchers(new AntPathRequestMatcher("/**/edit*")).authenticated()
+                .requestMatchers(new AntPathRequestMatcher("/**/delete*")).authenticated()
+                .requestMatchers(new AntPathRequestMatcher("/**")).permitAll()
+
+//                .antMatchers("/**/write*", "/**/edit*", "/**/delete*").authenticated()
+//                        .antMatchers("/**").permitAll()
                 .and()
                     .build();
         // @formatter:on
@@ -37,6 +43,7 @@ public class SecurityConfig { // } extends WebSecurityConfigurerAdapter {
     //	@Override
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {// void configure(WebSecurity web) throws Exception {
-        return (web) -> web.ignoring().antMatchers("/h2-console/**");
+        return (web) -> web.ignoring() .requestMatchers(new AntPathRequestMatcher("/h2-console/**"));
+                //antMatchers("/h2-console/**");
     }
 }

@@ -9,8 +9,8 @@ import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.web.servlet.HandlerInterceptor;
 //import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Slf4j
 public class UserSessionInterceptor implements HandlerInterceptor { // extends HandlerInterceptorAdapter {
