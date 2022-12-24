@@ -1,18 +1,17 @@
 # SpringBlog from Millky
-### SpringBoot 2 base Open-source Blog
+### SpringBoot 3 base Open-source Blog
 
 밀키(millky.com)에서 블로그 부분을 뽑아(?) 오픈소스 합니다.
 
 ```
-SpringBoot2 + Spring Data JPA + Spring Security + ...
+SpringBoot3 + Spring Data JPA + Spring Security + ...
 ```
 
 단지 코드만 공개한는 것이 아니라. 개발 과정을 같이 공개하려 합니다.
 
 ### LIVE DEMO
 - http://blog.millky.com/post/list
-- 제공하는 API를 확인해 보세요~ http://blog.millky.com/swagger-ui.html#!/tag-api/tagCloudUsingGET
-
+- 제공하는 API를 확인해 보세요~ http://blog.millky.com/swagger-ui/index.html#/tag-rest-controller/tagCloud
 
 ### 개발된 기능
 - 기본적인 블로그 뷰
@@ -34,8 +33,8 @@ SpringBoot2 + Spring Data JPA + Spring Security + ...
 
 ### Quick Start
 설치되어 있어야 할 것
-- JDK 1.8 (or Java 10)
-- Maven 3.5
+- JDK 17 이상
+- Maven
 - Git
 
 ```
@@ -48,8 +47,8 @@ mvn spring-boot:run
 
 
 ### Tested
-- STS(Eclipse) 3.8.4
-- IntelliJ IDEA 2018.1.4
+- STS(Eclipse) ??
+- IntelliJ IDEA 2022.3
 
 ```
 //@formatter:off & //@formatter:on
@@ -91,10 +90,8 @@ com.millky.blog
 ```
 
 #### Environment
-- Java version: 8 Update 172 or 10.0.1
-- Spring Boot version: 2.0.2
-- Maven version: 3.5.2
-- Lombok version: 1.18.0
+- Java version: 17
+- Spring Boot version: 3.0.1
 - Default Encoding: UTF-8
 - Default SCM : git
 

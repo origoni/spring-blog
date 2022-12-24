@@ -17,7 +17,7 @@ import com.millky.blog.domain.model.entity.Comment;
 import com.millky.blog.domain.model.exception.IllegalUserException;
 import com.millky.blog.infrastructure.dao.CommentDao;
 
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 public class CommentRestController {

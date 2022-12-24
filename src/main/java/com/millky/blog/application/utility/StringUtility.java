@@ -1,5 +1,5 @@
-package com.millky.blog.application.utility;
-
-public class StringUtility {
-
-}
+//package com.millky.blog.application.utility;
+//
+//public class StringUtility {
+//
+//}
