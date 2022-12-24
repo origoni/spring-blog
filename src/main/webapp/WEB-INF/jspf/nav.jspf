@@ -43,10 +43,11 @@
 		<div id="tag-cloud" style="width: 95%; height: 270px; margin: -10px 5px;"></div>
 		<li role="separator" class="divider"></li>
 		<li class="sidebar-brand">
-			<a href="/swagger-ui.html">APIs</a>
+			<a href="/swagger-ui/index.html">APIs</a>
+<%--			<a href="/swagger-ui.html">APIs</a>--%>
 		</li>
 		<li>
-			<a href="/swagger-ui.html#!/tag-api/tagCloudUsingGET">- tagCloudUsingGET</a>
+			<a href="/swagger-ui/index.html#/tag-rest-controller/tagCloud">- tagCloudUsingGET</a>
 		</li>
 		<li role="separator" class="divider"></li>
 		<li class="sidebar-brand">
